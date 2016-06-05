@@ -1,0 +1,19 @@
+{
+  "name": "eater-b-reporter",
+  "dependencies": {
+    "minimist": "registry:npm/minimist#1.0.0+20160229232932"
+  },
+  "globalDevDependencies": {
+    "empower": "registry:dt/empower#0.0.0+20160317120654",
+    "node": "registry:dt/node#6.0.0+20160524002506",
+    "power-assert": "registry:dt/power-assert#0.0.0+20160316155526",
+    "power-assert-formatter": "registry:dt/power-assert-formatter#0.0.0+20160317120654"
+  },
+  "devDependencies": {
+    "proxyquire": "registry:npm/proxyquire#1.0.0+20160211003958",
+    "sinon": "registry:npm/sinon#1.16.0+20160427193336"
+  },
+  "globalDependencies": {
+    "json5": "registry:dt/json5#0.0.0+20160316155526"
+  }
+}

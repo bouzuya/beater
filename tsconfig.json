@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outDir": ".tmp",
+    "removeComments": true,
+    "rootDir": ".",
+    "sourceMap": false,
+    "target": "es2015"
+  },
+  "files": [
+    "./src/abort-promise-exception.ts",
+    "./src/index.ts",
+    "./typings.d.ts",
+    "./typings/index.d.ts"
+  ]
+}

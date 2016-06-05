@@ -1,0 +1,65 @@
+{
+  "name": "beater",
+  "description": "beater: bouzuya's easy test runner. it is inspired by eater.",
+  "version": "0.0.0",
+  "author": {
+    "name": "bouzuya",
+    "email": "m@bouzuya.net",
+    "url": "http://bouzuya.net/"
+  },
+  "bin": {
+    "beater": "./bin/beater.sh"
+  },
+  "bugs": {
+    "url": "https://github.com/bouzuya/beater/issues"
+  },
+  "dependencies": {
+    "json5": "0.5.0"
+  },
+  "devDependencies": {
+    "eater": "1.5.5",
+    "espower-loader": "1.0.0",
+    "parallelshell": "2.0.0",
+    "power-assert": "1.4.1",
+    "proxyquire": "1.7.9",
+    "sinon": "1.17.4",
+    "typescript": "1.8.10",
+    "typings": "1.0.4",
+    "watch": "0.18.0"
+  },
+  "eater": {
+    "dir": "./.tmp/test",
+    "require": [
+      "./scripts/enable-power-assert.js"
+    ]
+  },
+  "files": [
+    "bin/",
+    "lib/"
+  ],
+  "homepage": "https://github.com/bouzuya/beater",
+  "keywords": [
+    "beater",
+    "bouzuya",
+    "eater",
+    "runner",
+    "test"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bouzuya/beater.git"
+  },
+  "scripts": {
+    "build": "tsc && npm run copy",
+    "clean": "rm -rf .tmp/ lib/",
+    "copy": "([ -d lib/ ] || mkdir -p lib/) && cp -R .tmp/src/* lib/",
+    "prepublish": "typings install && npm run build",
+    "test": "eater",
+    "watch": "parallelshell 'tsc --watch' 'npm run watch-copy' 'npm run watch-test'",
+    "watch-copy": "watch --wait 2 'npm run copy' '.tmp/src/'",
+    "watch-test": "watch --wait 2 'npm test' '.tmp/test/'"
+  },
+  "typings": "lib/index.d.ts"
+}
