@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "beater-reporter": "0.1.0",
+    "exists-sync": "0.0.3",
     "json5": "0.5.0"
   },
   "devDependencies": {
