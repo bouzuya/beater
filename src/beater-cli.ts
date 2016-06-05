@@ -46,8 +46,7 @@ const run = (): void => {
     process.exit(0);
   }
 
-  const reporterName = opts.reporter
-    ? opts.reporter : '../lib/reporter/Reporter';
+  const reporterName = opts.reporter ? opts.reporter : 'beater-reporter';
   const reporter = requireReporter(reporterName);
 
   const requires = (
