@@ -15,7 +15,9 @@
   "files": [
     "./src/abort-promise-exception.ts",
     "./src/index.ts",
+    "./test/fixture/failure.ts",
     "./test/fixture/success.ts",
+    "./test/lib/failure.ts",
     "./test/lib/success.ts",
     "./typings.d.ts",
     "./typings/index.d.ts"
