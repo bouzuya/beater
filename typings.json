@@ -12,8 +12,5 @@
   "devDependencies": {
     "proxyquire": "registry:npm/proxyquire#1.0.0+20160211003958",
     "sinon": "registry:npm/sinon#1.16.0+20160427193336"
-  },
-  "globalDependencies": {
-    "json5": "registry:dt/json5#0.0.0+20160316155526"
   }
 }

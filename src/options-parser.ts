@@ -3,14 +3,13 @@ import * as existsSync from 'exists-sync';
 import * as path from 'path';
 import * as colo from 'colo';
 import * as fs from 'fs';
-import * as JSON5 from 'json5';
 import { Reporter } from './reporter';
 import { ConfigFileOptions, CommandLineOptions } from './options';
 
 const loadRcOptions = (configFile: string): ConfigFileOptions => {
   if (!existsSync(configFile)) return {};
   const config = fs.readFileSync(configFile, { encoding: 'utf-8' });
-  return JSON5.parse(config) || {};
+  return JSON.parse(config) || {};
 };
 
 const loadPackageOptions = (cwd: string): ConfigFileOptions => {
