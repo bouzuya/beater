@@ -11,7 +11,7 @@ class MockReporter {
   testStarted(file: string, test: string): void { }
 }
 
-test('success', () => {
+test('run success', () => {
   const sandbox = sinon.sandbox.create();
   const reporter = new MockReporter();
   const started = sandbox.stub(reporter, 'started');
