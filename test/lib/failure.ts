@@ -1,19 +1,11 @@
 import * as assert from 'power-assert';
 import * as sinon from 'sinon';
 import { test, Beater } from '../../src/';
-
-class MockReporter {
-  finished(files: string[], errors: { [file: string]: Error[]; }): void { }
-  started(files: string[]): void { }
-  fileFinished(file: string, errors: Error[]): void { }
-  fileStarted(file: string): void { }
-  testFinished(file: string, test: string, error?: Error): void { }
-  testStarted(file: string, test: string): void { }
-}
+import { StubReporter } from '../helper/stub-reporter';
 
 test('run fixture/failure', () => {
   const sandbox = sinon.sandbox.create();
-  const reporter = new MockReporter();
+  const reporter = new StubReporter();
   const started = sandbox.stub(reporter, 'started');
   const finished = sandbox.stub(reporter, 'finished');
   const fileStarted = sandbox.stub(reporter, 'fileStarted');
