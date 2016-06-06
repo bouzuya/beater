@@ -87,7 +87,7 @@ class Runner extends EventEmitter {
   }
 
   private send(type: string, test?: Test<any, any>, error?: any): void {
-    const message: Message = { type, test: test ? test.name: undefined, error };
+    const message: Message = { type, test: test ? test.name : undefined, error };
     process.send && process.send(message);
   }
 
