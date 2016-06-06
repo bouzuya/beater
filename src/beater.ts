@@ -31,16 +31,24 @@ export class Beater extends EventEmitter {
     this.on('next', this.nextFile.bind(this));
   }
 
-  start(): void {
-    this.reporter.started(this.files);
-    this.pendingFiles
-      .splice(0, this.procs)
-      .forEach(file => this.emit('next', file));
+  start(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.once('finish', (hasError: boolean) => {
+        (hasError ? reject : resolve)();
+      });
+      this.reporter.started(this.files);
+      this.pendingFiles
+        .splice(0, this.procs)
+        .forEach(file => this.emit('next', file));
+    });
   }
 
   private finish(): void {
     this.reporter.finished(this.files, this.errors);
-    this.emit('finished', this.files, this.errors);
+    const hasError = Object
+      .keys(this.errors)
+      .some(file => this.errors[file].length > 0);
+    this.emit('finish', hasError);
   }
 
   private nextFile(file: string): void {

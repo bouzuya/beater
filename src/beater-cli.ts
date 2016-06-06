@@ -70,11 +70,7 @@ const run = (): void => {
     procs: opts.procs,
     requires: requires,
   });
-  beater.on('finished', (_: string[], errors: { [file: string]: Error[]; }) => {
-    const hasError = Object.keys(errors).some(file => errors[file].length > 0);
-    if (hasError) process.exit(1);
-  });
-  beater.start();
+  beater.start().catch(() => process.exit(1));
 };
 
 export { run };
