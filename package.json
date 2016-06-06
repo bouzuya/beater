@@ -29,8 +29,8 @@
     "typings": "1.0.4",
     "watch": "0.18.0"
   },
-  "eater": {
-    "dir": "./.tmp/test",
+  "beater": {
+    "dir": "./.tmp/test/lib/",
     "require": [
       "./scripts/enable-power-assert.js"
     ]
@@ -58,7 +58,7 @@
     "clean": "rm -rf .tmp/ lib/",
     "copy": "([ -d lib/ ] || mkdir -p lib/) && cp -R .tmp/src/* lib/",
     "prepublish": "typings install && npm run build",
-    "test": "eater",
+    "test": "./bin/beater.sh",
     "watch": "parallelshell 'tsc --watch' 'npm run watch-copy' 'npm run watch-test'",
     "watch-copy": "watch --wait 2 'npm run copy' '.tmp/src/'",
     "watch-test": "watch --wait 2 'npm test' '.tmp/test/'"

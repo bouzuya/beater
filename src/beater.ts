@@ -63,7 +63,7 @@ export class Beater extends EventEmitter {
     ]), []).concat([
       '--require', path.join(__dirname, 'abort-promise-exception')
     ]);
-    const cp = childProcess.fork(file, args, { silent: true, execArgv: args });
+    const cp = childProcess.fork(file, [], { execArgv: args });
     cp.on('message', (m: Message) => {
       if (m.type === 'started') {
         this.reporter.testStarted(file, m.test);
