@@ -1,17 +1,19 @@
 import * as assert from 'power-assert';
 import * as sinon from 'sinon';
 import { test, Beater } from '../../src/';
-import { StubReporter } from '../helper/stub-reporter';
+import { init } from '../helper/spy-reporter';
 
 test('run fixture/empty', () => {
   const sandbox = sinon.sandbox.create();
-  const reporter = new StubReporter();
-  const started = sandbox.stub(reporter, 'started');
-  const finished = sandbox.stub(reporter, 'finished');
-  const fileStarted = sandbox.stub(reporter, 'fileStarted');
-  const fileFinished = sandbox.stub(reporter, 'fileFinished');
-  const testStarted = sandbox.stub(reporter, 'testStarted');
-  const testFinished = sandbox.stub(reporter, 'testFinished');
+  const {
+    reporter,
+    started,
+    finished,
+    fileStarted,
+    fileFinished,
+    testStarted,
+    testFinished
+  } = init(sandbox);
   const file = './.tmp/test/fixture/empty.js';
   const beater = new Beater({ files: [file], reporter });
   return beater.start().then(() => {
