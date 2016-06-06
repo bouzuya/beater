@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 import { cpus } from 'os';
 import * as path from 'path';
 import { listupFiles } from './listup-files';
+import { Message } from './message';
 import { Options } from './options';
 import { Reporter } from './reporter';
 
@@ -55,11 +56,7 @@ export class Beater extends EventEmitter {
       '--require', path.join(__dirname, 'abort-promise-exception')
     ]);
     const cp = childProcess.fork(file, args, { silent: true, execArgv: args });
-    cp.on('message', (m: {
-      type: string;
-      test: string;
-      error?: Error;
-    }) => {
+    cp.on('message', (m: Message) => {
       if (m.type === 'started') {
         this.reporter.testStarted(file, m.test);
       } else if (m.type === 'finished') {

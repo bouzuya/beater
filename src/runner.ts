@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events';
+import { Message } from './message';
 import { process } from './process';
 
 export type Test<T, U> = {
@@ -80,7 +81,7 @@ class Runner extends EventEmitter {
   }
 
   private send(type: string, test?: Test<any, any>, error?: any): void {
-    const message = { type, test: test ? test.name: undefined, error };
+    const message: Message = { type, test: test ? test.name: undefined, error };
     process.send && process.send(message);
   }
 
