@@ -50,7 +50,13 @@ class Runner extends EventEmitter {
     const test = this.pendingTests.shift();
     this.send('started', test);
     this.runTest(test)
-      .then(() => void 0, error => error)
+      .then(() => void 0, error => {
+        return (
+          typeof error === 'undefined' || error === null
+            ? new Error('Error is null or undefined')
+            : error
+        );
+      })
       .then(error => {
         const serialized = this.serializeError(error);
         this.send('finished', test, serialized);
