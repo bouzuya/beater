@@ -11,7 +11,7 @@ class MockReporter {
   testStarted(file: string, test: string): void { }
 }
 
-test('run failure', () => {
+test('run fixture/failure', () => {
   const sandbox = sinon.sandbox.create();
   const reporter = new MockReporter();
   const started = sandbox.stub(reporter, 'started');
@@ -21,10 +21,7 @@ test('run failure', () => {
   const testStarted = sandbox.stub(reporter, 'testStarted');
   const testFinished = sandbox.stub(reporter, 'testFinished');
   const file = './.tmp/test/fixture/failure.js';
-  const beater = new Beater({
-    reporter,
-    files: [file]
-  });
+  const beater = new Beater({ files: [file], reporter });
   return beater.start().catch(() => {
     const startedArgs = started.getCall(0).args;
     assert.deepEqual(startedArgs, [[file]]);
