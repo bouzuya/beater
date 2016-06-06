@@ -7,6 +7,12 @@
     "email": "m@bouzuya.net",
     "url": "http://bouzuya.net/"
   },
+  "beater": {
+    "dir": "./.tmp/test/lib/",
+    "require": [
+      "./scripts/enable-power-assert.js"
+    ]
+  },
   "bin": {
     "beater": "./bin/beater.sh"
   },
@@ -19,7 +25,6 @@
     "minimist": "1.2.0"
   },
   "devDependencies": {
-    "eater": "1.5.5",
     "espower-loader": "1.0.0",
     "parallelshell": "2.0.0",
     "power-assert": "1.4.1",
@@ -28,12 +33,6 @@
     "typescript": "1.8.10",
     "typings": "1.0.4",
     "watch": "0.18.0"
-  },
-  "beater": {
-    "dir": "./.tmp/test/lib/",
-    "require": [
-      "./scripts/enable-power-assert.js"
-    ]
   },
   "files": [
     "bin/",
