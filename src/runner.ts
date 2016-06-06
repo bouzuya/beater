@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events';
+import { process } from './process';
 
 export type Test<T, U> = {
   name: string;

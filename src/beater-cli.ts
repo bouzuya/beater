@@ -2,9 +2,10 @@ import * as minimist from 'minimist';
 import * as existsSync from 'exists-sync';
 import * as fs from 'fs';
 import * as path from 'path';
-import { optionsParser } from './options-parser';
 import { Beater } from './beater';
 import { Reporter } from './reporter';
+import { optionsParser } from './options-parser';
+import { process } from './process';
 
 const help = (): string => {
   return `
