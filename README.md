@@ -1,4 +1,4 @@
-# beater
+# beater (beta)
 
 **b**ouzuya's **ea**sy **t**est runn**er**. beater is inspired by [eater][yosuke-furukawa/eater].
 
