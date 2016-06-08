@@ -28,9 +28,9 @@ $ npm install beater
 
 ```ts
 import * as assert from 'assert';
-import { test } from 'beater';
+import { test, fixture } from 'beater';
 
-test('sync test', () => {
+test('simple test', () => {
   assert(1 + 1 === 20); // fail
 });
 
@@ -40,6 +40,12 @@ test('async test', () => {
     resolve();
   });
 });
+
+const before = () => 3; // setup fixture (context)
+const after = context => void 0; // clean up fixture (context)
+test('before/after', fixture({ before, after }, context => {
+  assert(context === 3); // ok
+}));
 ```
 
 ## Badges
