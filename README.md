@@ -9,7 +9,6 @@ I highly recommend the original eater ([yosuke-furukawa/eater][]).
 ## Features
 
 - Multi-process: See [eater][yosuke-furukawa/eater]'s document.
-- Easy mock: See [eater][yosuke-furukawa/eater]'s document.
 - Happy async: See [eater][yosuke-furukawa/eater]'s document.
 - Require `test()`: You must use `test()`. It is the most biggest difference between eater and beater.
 - Promise support: You can use a `Promise`. `done()` and `fail()` is removed.
