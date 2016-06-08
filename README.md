@@ -44,6 +44,7 @@ test('async test', () => {
 
 ## Badges
 
+[![npm version][npm-badge-url]][npm-url]
 [![Circle CI][circleci-badge-url]][circleci-url]
 
 ## License
@@ -57,5 +58,7 @@ test('async test', () => {
 [user]: https://github.com/bouzuya
 [email]: mailto:m@bouzuya.net
 [url]: http://bouzuya.net
+[npm-badge-url]: https://badge.fury.io/js/beater.svg
+[npm-url]: https://www.npmjs.com/package/beater
 [circleci-badge-url]: https://circleci.com/gh/bouzuya/beater.svg?style=svg
 [circleci-url]: https://circleci.com/gh/bouzuya/beater
