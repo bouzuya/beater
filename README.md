@@ -1,10 +1,13 @@
 # beater (beta)
 
+![beater logo][beater-logo]
+
 **b**ouzuya's **ea**sy **t**est runn**er**. beater is inspired by [eater][yosuke-furukawa/eater].
 
 I highly recommend the original eater ([yosuke-furukawa/eater][]).
 
 [yosuke-furukawa/eater]: https://github.com/yosuke-furukawa/eater
+[beater-logo]: https://cloud.githubusercontent.com/assets/1221346/15892977/e69386f0-2db7-11e6-9163-bcb2f2471581.png
 
 ## Features
 
