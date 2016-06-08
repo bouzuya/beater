@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "beater-reporter": "0.1.0",
+    "colo": "0.3.2",
     "exists-sync": "0.0.3",
     "minimist": "1.2.0"
   },
