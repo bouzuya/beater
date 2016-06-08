@@ -20,6 +20,7 @@
     "./test/fixture/success.ts",
     "./test/lib/empty.ts",
     "./test/lib/failure.ts",
+    "./test/lib/fixture.ts",
     "./test/lib/success.ts",
     "./typings.d.ts",
     "./typings/index.d.ts"

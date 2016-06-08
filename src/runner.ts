@@ -2,18 +2,16 @@ import { EventEmitter } from 'events';
 import { Message } from './message';
 import { process } from './process';
 
-export type Test<T, U> = {
+export type Test<T> = {
   name: string;
-  test: (context?: T) => U | Promise<U>;
-  before: () => T | Promise<T>;
-  after: (context?: T, result?: U) => void | Promise<void>;
+  test: () => T | Promise<T>;
 };
 
 class Runner extends EventEmitter {
   private running: boolean;
-  private tests: Test<any, any>[];
-  private pendingTests: Test<any, any>[];
-  private finishedTests: Test<any, any>[];
+  private tests: Test<any>[];
+  private pendingTests: Test<any>[];
+  private finishedTests: Test<any>[];
 
   constructor() {
     super();
@@ -31,7 +29,7 @@ class Runner extends EventEmitter {
     });
   }
 
-  add(test: Test<any, any>): void {
+  add(test: Test<any>): void {
     this.tests.push(test);
     this.pendingTests.push(test);
   }
@@ -49,7 +47,8 @@ class Runner extends EventEmitter {
     }
     const test = this.pendingTests.shift();
     this.send('started', test);
-    this.runTest(test)
+    Promise.resolve()
+      .then(test.test)
       .then(() => void 0, error => {
         return (
           typeof error === 'undefined' || error === null
@@ -65,29 +64,10 @@ class Runner extends EventEmitter {
       });
   }
 
-  private runTest({ before, test, after }: Test<any, any>): Promise<any> {
-    return Promise
-      .resolve()
-      .then(before)
-      .then(context => {
-        return Promise
-          .resolve(context)
-          .then(test)
-          .then(result => {
-            return Promise
-              .resolve()
-              .then(() => after(context, result)); // through after error
-          }, error => {
-            return Promise
-              .resolve()
-              .then(() => after(context, void 0))
-              .then(() => Promise.reject(error)); // through after error
-          });
-      });
-  }
-
-  private send(type: string, test?: Test<any, any>, error?: any): void {
-    const message: Message = { type, test: test ? test.name : undefined, error };
+  private send(type: string, test?: Test<any>, error?: any): void {
+    const message: Message = {
+      type, test: test ? test.name : undefined, error
+    };
     process.send && process.send(message);
   }
 
@@ -100,18 +80,12 @@ class Runner extends EventEmitter {
 }
 
 let runner: Runner;
-const test = <T, U>(
+const test = <T>(
   name: string,
-  test: (context?: T) => U | Promise<U>,
-  options?: {
-    before: () => T | Promise<T>;
-    after: (context?: T, result?: U) => void | Promise<void>;
-  }
+  test: () => T | Promise<T>
 ): void => {
   if (!runner) runner = new Runner(); // Runner is a singleton
-  const before = options ? options.before : (): T => void 0;
-  const after = options ? options.after : (): void => void 0;
-  runner.add({ name, test, before, after });
+  runner.add({ name, test });
   runner.run();
 };
 
