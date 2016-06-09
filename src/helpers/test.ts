@@ -8,8 +8,10 @@ const getRunner = (): Runner => {
   return runner;
 };
 
+const isBrowser = (): boolean => (<any>process).browser;
+
 const newRunner = (): Runner => {
-  return process.browser ? new ClientRunner() : new ServerRunner();
+  return isBrowser() ? new ClientRunner() : new ServerRunner();
 };
 
 const test = <T>(name: string, test: () => T | Promise<T>): void => {
