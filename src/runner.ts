@@ -28,9 +28,10 @@ class Runner extends EventEmitter {
   add(test: Test<any>): void {
     this.tests.push(test);
     this.pendingTests.push(test);
+    this.internalRun();
   }
 
-  run(): void {
+  private internalRun(): void {
     if (this.running) return; // already running
     this.running = true;
     process.nextTick(() => this.emit('next'));
@@ -82,7 +83,6 @@ const test = <T>(
 ): void => {
   if (!runner) runner = new Runner(); // Runner is a singleton
   runner.add({ name, test });
-  runner.run();
 };
 
 export { test };
