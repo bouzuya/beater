@@ -18,13 +18,15 @@ I highly recommend the original eater ([yosuke-furukawa/eater][]).
 - TypeScript support: `*.d.ts` is included.
 - Reporter improved: A custom reporters can control the all runner's output.
 
-## Installation
+## Usage
+
+### Install
 
 ```
 $ npm install beater
 ```
 
-## Usage
+### Write some tests
 
 ```ts
 import * as assert from 'assert';
@@ -41,12 +43,25 @@ test('async test', () => {
   });
 });
 
-const before = () => 3; // setup fixture (context)
-const after = context => void 0; // clean up fixture (context)
+const before = () => {
+  const context = 3;
+  return context;
+};
+const after = context => {};
 test('before/after', fixture({ before, after }, context => {
   assert(context === 3); // ok
 }));
 ```
+
+### Run
+
+```
+$ $(npm bin)/beater
+```
+
+### More...
+
+See [doc/](doc/README.md).
 
 ## Badges
 
