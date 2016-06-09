@@ -40,7 +40,10 @@ const requireReporter = (reporterName: string): Reporter => {
 };
 
 const version = (): string => {
-  const packageJson = fs.readFileSync('../package.json', { encoding: 'utf-8' });
+  const packageJson = fs.readFileSync(
+    path.join(__dirname, '/../package.json'),
+    { encoding: 'utf-8' }
+  );
   const pack = JSON.parse(packageJson);
   return pack.version;
 };
