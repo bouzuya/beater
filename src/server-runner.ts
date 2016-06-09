@@ -1,10 +1,11 @@
 import { EventEmitter } from 'events';
 import { Message } from './message';
-import { process } from './process';
+import { Runner } from './runner';
 import { Test } from './test';
+import { process } from './process';
 
 // Runner for Node.js
-class ServerRunner extends EventEmitter {
+class ServerRunner extends EventEmitter implements Runner {
   private running: boolean;
   private tests: Test<any>[];
   private pendingTests: Test<any>[];
