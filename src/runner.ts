@@ -1,11 +1,7 @@
 import { EventEmitter } from 'events';
 import { Message } from './message';
 import { process } from './process';
-
-export type Test<T> = {
-  name: string;
-  test: () => T | Promise<T>;
-};
+import { Test } from './test';
 
 class Runner extends EventEmitter {
   private running: boolean;
