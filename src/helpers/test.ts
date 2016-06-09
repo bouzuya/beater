@@ -1,5 +1,5 @@
 import { Runner } from '../runner';
-import { ServerRunner } from '../runners';
+import { ClientRunner, ServerRunner } from '../runners';
 
 let runner: Runner = null; // singleton
 
@@ -9,7 +9,7 @@ const getRunner = (): Runner => {
 };
 
 const newRunner = (): Runner => {
-  return new ServerRunner();
+  return process.browser ? new ClientRunner() : new ServerRunner();
 };
 
 const test = <T>(name: string, test: () => T | Promise<T>): void => {
