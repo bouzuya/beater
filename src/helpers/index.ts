@@ -1,2 +1,2 @@
 export { fixture } from './fixture';
-export { test } from './test';
+export { test, getRunner } from './test';

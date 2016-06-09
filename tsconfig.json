@@ -13,8 +13,8 @@
     "target": "es2015"
   },
   "files": [
-    "./src/abort-promise-exception.ts",
     "./src/index.ts",
+    "./src/runners/server-runner/abort-promise-exception.ts",
     "./test/fixture/empty.ts",
     "./test/fixture/failure.ts",
     "./test/fixture/success.ts",
