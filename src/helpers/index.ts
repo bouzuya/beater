@@ -1,2 +1,2 @@
 export { fixture } from './fixture';
-export { test } from './server-runner';
+export { test } from './test';
