@@ -1,4 +1,3 @@
 export { Beater } from './beater';
 export { run } from './beater-cli';
-export { fixture } from './fixture';
-export { test } from './server-runner';
+export { fixture, test } from './helpers';

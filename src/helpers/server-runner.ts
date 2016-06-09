@@ -1,8 +1,8 @@
 import { EventEmitter } from 'events';
-import { Message } from './message';
-import { Runner } from './runner';
-import { Test } from './test';
-import { process } from './process';
+import { Message } from '../message';
+import { Runner } from '../runner';
+import { Test } from '../test';
+import { process } from '../process';
 
 // Runner for Node.js
 class ServerRunner extends EventEmitter implements Runner {
