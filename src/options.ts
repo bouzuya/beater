@@ -1,9 +1,7 @@
 import { Reporter } from './reporter';
 
 export interface Options {
-  dir?: string;
-  ext?: string;
-  files?: string[];
+  files: string[];
   procs?: number;
   reporter: Reporter;
   requires?: string[];

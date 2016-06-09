@@ -7,6 +7,19 @@ import { Reporter } from './reporter';
 import { optionsParser } from './options-parser';
 import { process } from './process';
 
+const listupFiles = (dir: string, ext: string): string[] => {
+  return fs
+    .readdirSync(dir)
+    .map(file => path.join(dir, file))
+    .reduce((files: string[], file: string) => {
+      return fs.statSync(file).isDirectory()
+        ? files.concat(listupFiles(file, ext))
+        : file.endsWith(ext)
+          ? files.concat([file])
+          : files;
+    }, []);
+};
+
 const help = (): string => {
   return `
     beater [--dir test directroy default 'test/'] [--ext test file extension default '.js'] [--reporter fooreporter] [--procs max process number default cpu core num] [--require prerequire modules]
@@ -62,13 +75,16 @@ const run = (): void => {
   });
   requires.forEach(moduleName => require(moduleName));
 
+  const dir = opts.dir || 'test/';
+  const ext = opts.ext || '.js';
+  const files = (opts.files || []).length > 0
+    ? opts.files : listupFiles(dir, ext);
+
   const beater = new Beater({
-    reporter,
-    dir: opts.dir,
-    ext: opts.ext,
-    files: opts.files,
+    files,
     procs: opts.procs,
-    requires: requires,
+    reporter,
+    requires
   });
   beater.start().catch(() => process.exit(1));
 };

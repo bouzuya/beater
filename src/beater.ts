@@ -2,7 +2,6 @@ import * as childProcess from 'child_process';
 import { EventEmitter } from 'events';
 import { cpus } from 'os';
 import * as path from 'path';
-import { listupFiles } from './listup-files';
 import { Message } from './message';
 import { Options } from './options';
 import { Reporter } from './reporter';
@@ -19,10 +18,7 @@ export class Beater extends EventEmitter {
   constructor(options: Options) {
     super();
     this.reporter = options.reporter;
-    const dir = options.dir || `test/`;
-    const ext = options.ext || '.js';
-    const files = options.files || [];
-    this.files = files.length > 0 ? files : listupFiles(dir, ext);
+    this.files = options.files;
     this.pendingFiles = this.files.slice();
     this.finishedFiles = [];
     this.procs = options.procs || cpus().length;
