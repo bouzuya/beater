@@ -3,7 +3,8 @@ import { Message } from './message';
 import { process } from './process';
 import { Test } from './test';
 
-class Runner extends EventEmitter {
+// Runner for Node.js
+class ServerRunner extends EventEmitter {
   private running: boolean;
   private tests: Test<any>[];
   private pendingTests: Test<any>[];
@@ -76,12 +77,12 @@ class Runner extends EventEmitter {
   }
 }
 
-let runner: Runner;
+let runner: ServerRunner;
 const test = <T>(
   name: string,
   test: () => T | Promise<T>
 ): void => {
-  if (!runner) runner = new Runner(); // Runner is a singleton
+  if (!runner) runner = new ServerRunner(); // Runner is a singleton
   runner.add({ name, test });
 };
 
