@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('../lib/').run();
+require('../lib/beater-cli').run();
