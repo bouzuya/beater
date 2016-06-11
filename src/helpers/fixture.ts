@@ -1,3 +1,9 @@
+const p = (f: Function, ...args: any[]): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    Promise.resolve(f.apply(void 0, args)).then(resolve, reject);
+  });
+};
+
 const fixture = <T, U>(
   options: {
     before?: () => T | Promise<T>;
@@ -7,26 +13,12 @@ const fixture = <T, U>(
 ): () => Promise<void> => {
   const before = options.before ? options.before : (): T => void 0;
   const after = options.after ? options.after : (): void => void 0;
-  return () => {
-    return Promise
-      .resolve()
-      .then(before)
-      .then(context => {
-        return Promise
-          .resolve(context)
-          .then(test)
-          .then(result => {
-            return Promise
-              .resolve()
-              .then(() => after(context, result)); // through after error
-          }, error => {
-            return Promise
-              .resolve()
-              .then(() => after(context, void 0))
-              .then(() => Promise.reject(error)); // through after error
-          });
-      });
-  };
+  return () =>
+    p(before).then(
+      c => p(test, c).then(
+        r => p(after, c, r),
+        e => p(after, c, void 0).then(
+          () => e ? Promise.reject(e) : void 0)));
 };
 
 export { fixture };
