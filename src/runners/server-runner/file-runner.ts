@@ -1,10 +1,5 @@
-import * as childProcess from 'child_process';
 import { EventEmitter } from 'events';
-import * as path from 'path';
 import { Message } from '../../message';
-import { Options } from '../../options';
-import { Reporter } from '../../reporter';
-import { Runner } from '../../runner';
 import { Test } from '../../test';
 
 export class FileRunner extends EventEmitter {
