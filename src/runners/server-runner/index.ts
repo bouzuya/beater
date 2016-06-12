@@ -1,3 +1,4 @@
+import { Promise } from '../../globals/promise';
 import { Options } from '../../options';
 import { Runner } from '../../runner';
 import { Test } from '../../test';

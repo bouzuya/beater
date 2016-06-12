@@ -1,3 +1,4 @@
+import { Promise } from '../globals/promise';
 import { Options } from '../options';
 import { Reporter } from '../reporter';
 import { Runner } from '../runner';

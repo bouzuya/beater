@@ -1,3 +1,5 @@
+import { Promise } from '../globals/promise';
+
 const p = (f: Function, ...args: any[]): Promise<any> => {
   return new Promise((resolve, reject) => {
     Promise.resolve(f.apply(void 0, args)).then(resolve, reject);

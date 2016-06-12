@@ -1,3 +1,4 @@
+import { Promise } from '../../globals/promise';
 import * as childProcess from 'child_process';
 import { EventEmitter } from 'events';
 import { cpus } from 'os';

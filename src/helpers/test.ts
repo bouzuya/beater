@@ -1,4 +1,5 @@
 import { process } from '../globals/process'
+import { Promise } from '../globals/promise';
 import { Runner } from '../runner';
 import { ClientRunner, ServerRunner } from '../runners';
 
