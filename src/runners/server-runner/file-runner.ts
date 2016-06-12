@@ -1,3 +1,4 @@
+import { process } from '../../globals/process';
 import { EventEmitter } from 'events';
 import { Message } from '../../message';
 import { Test } from '../../test';

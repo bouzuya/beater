@@ -5,7 +5,7 @@ import * as path from 'path';
 import { Beater } from './beater';
 import { Reporter } from './reporter';
 import { optionsParser } from './options-parser';
-import { process } from './process';
+import { process } from './globals/process';
 
 const listupFiles = (dir: string, ext: string): string[] => {
   return fs

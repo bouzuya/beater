@@ -1,3 +1,4 @@
+import { process } from '../globals/process'
 import { Runner } from '../runner';
 import { ClientRunner, ServerRunner } from '../runners';
 
