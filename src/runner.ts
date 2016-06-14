@@ -1,8 +1,82 @@
+import { process } from './globals/process';
 import { Promise } from './globals/promise';
-import { Options } from './options';
-import { Test } from './test';
+import { EventEmitter } from 'events';
+import { InternalTest } from './types/internal-test';
+import { Reporter } from './types/reporter';
+import { TestResult } from './types/test-result';
 
-export interface Runner {
-  add(test: Test<any>): void;
-  run(options: Options): Promise<void>;
+export class Runner extends EventEmitter {
+  private running: boolean;
+  private tests: InternalTest[];
+  private pendingTests: InternalTest[];
+  private finishedTests: TestResult[];
+  private reporter: Reporter;
+
+  constructor(reporter: Reporter) {
+    super();
+    if (typeof reporter === 'undefined') {
+      throw new Error('reporter is not defined');
+    }
+    this.reporter = reporter;
+    this.running = false;
+    this.tests = [];
+    this.pendingTests = [];
+    this.finishedTests = [];
+    process.on('exit', () => {
+      if (this.finishedTests.length < this.tests.length) {
+        const error = new Error('Pending test exists, but process exit');
+        const serialized = this.serializeError(error);
+        this.reporter.finished([{
+          test: { name: undefined },
+          error: serialized
+        }]);
+      }
+    });
+  }
+
+  add(test: InternalTest): void {
+    this.tests.push(test);
+    this.pendingTests.push(test);
+    this.privateRun();
+  }
+
+  private privateRun(): void {
+    if (this.running) return; // already running
+    this.running = true;
+    process.nextTick(() => this.nextTest());
+  }
+
+  private nextTest(): void {
+    if (this.pendingTests.length === 0) {
+      this.running = false;
+      return;
+    }
+    if (this.pendingTests.length === this.tests.length) {
+      this.reporter.started();
+    }
+    const test = this.pendingTests.shift();
+    this.reporter.testStarted({ name: test.name });
+    new Promise((resolve, reject) => {
+      Promise.resolve(test.fn()).then(resolve, reject);
+    })
+      .then(() => void 0, this.serializeError.bind(this))
+      .then(error => {
+        const result: TestResult = { test: { name: test.name }, error };
+        this.finishedTests.push(result);
+        this.reporter.testFinished(result);
+        if (this.finishedTests.length === this.tests.length) {
+          this.reporter.finished(this.finishedTests);
+        }
+        this.nextTest();
+      });
+  }
+
+  // FIXME:
+  private serializeError(error: any): any {
+    error = typeof error === 'undefined' ? new Error('undefined') : error;
+    error = error === null ? new Error('null') : error;
+    error = typeof error === 'string' ? new Error('string') : error;
+    const { name, message, stack } = error;
+    return { name, message, stack };
+  }
 }
