@@ -1,2 +1,2 @@
-export { Beater } from './beater';
-export { fixture, test } from './helpers';
+import { init } from './helpers';
+export default init;
