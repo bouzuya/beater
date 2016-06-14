@@ -1,24 +1,14 @@
-import { process } from '../globals/process'
 import { Promise } from '../globals/promise';
 import { Runner } from '../runner';
-import { ClientRunner, ServerRunner } from '../runners';
 
-let runner: Runner = null; // singleton
+export type TestFn = <T>() => T | Promise<T>;
 
-const getRunner = (): Runner => {
-  if (!runner) runner = newRunner();
-  return runner;
+export type TestHelper = (name: string, fn: TestFn) => void;
+
+const init = (runner: Runner): (name: string, fn: TestFn) => void => {
+  return (name: string, fn: TestFn): void => {
+    runner.add({ name, fn });
+  };
 };
 
-const isBrowser = (): boolean => (<any>process).browser;
-
-const newRunner = (): Runner => {
-  return isBrowser() ? new ClientRunner() : new ServerRunner();
-};
-
-const test = <T>(name: string, test: () => T | Promise<T>): void => {
-  const runner = getRunner();
-  runner.add({ name, test });
-};
-
-export { test, getRunner };
+export { init };
