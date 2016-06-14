@@ -1,8 +1,5 @@
 {
-  "name": "eater-b-reporter",
-  "dependencies": {
-    "minimist": "registry:npm/minimist#1.0.0+20160229232932"
-  },
+  "name": "beater",
   "globalDevDependencies": {
     "empower": "registry:dt/empower#0.0.0+20160317120654",
     "node": "registry:dt/node#6.0.0+20160524002506",

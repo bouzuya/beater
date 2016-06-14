@@ -14,7 +14,6 @@
   },
   "files": [
     "./src/index.ts",
-    "./src/beater-cli.ts",
     "./src/runners/server-runner/abort-promise-exception.ts",
     "./test/fixture/empty.ts",
     "./test/fixture/failure.ts",
@@ -23,7 +22,6 @@
     "./test/lib/failure.ts",
     "./test/lib/fixture.ts",
     "./test/lib/success.ts",
-    "./typings.d.ts",
     "./typings/index.d.ts"
   ]
 }
