@@ -18,6 +18,7 @@
     "./test/globals/process.ts",
     "./test/globals/promise.ts",
     "./test/helpers/fixture.ts",
+    "./test/helpers/index.ts",
     "./test/helpers/test.ts",
     "./typings/index.d.ts"
   ]
