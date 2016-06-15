@@ -23,14 +23,24 @@ I highly recommend the original eater ([yosuke-furukawa/eater][]).
 ### Install
 
 ```
-$ npm install beater
+$ npm install beater beater-cli
 ```
 
 ### Write some tests
 
 ```ts
-import * as assert from 'assert';
-import { test, fixture } from 'beater';
+// test/helper.ts
+import beater from 'beater';
+
+const { test, fixture } = beater();
+
+export { test, fixture };
+```
+
+```ts
+// test/foo.ts
+import assert from 'power-assert';
+import { test, fixture } from './helper';
 
 test('simple test', () => {
   assert(1 + 1 === 20); // fail
@@ -43,10 +53,7 @@ test('async test', () => {
   });
 });
 
-const before = () => {
-  const context = 3;
-  return context;
-};
+const before = () => 3;
 const after = context => {};
 test('before/after', fixture({ before, after }, context => {
   assert(context === 3); // ok
