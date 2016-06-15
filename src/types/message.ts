@@ -1,5 +1,4 @@
-import { Test } from './test';
-import { TestResult } from './test-result';
+import { Test, TestResult } from 'beater-reporter';
 
 export interface Message {
   type: string;

@@ -1,8 +1,7 @@
+import { Reporter, TestResult } from 'beater-reporter';
 import { process, Promise } from './globals';
 import { EventEmitter } from 'events';
 import { InternalTest } from './types/internal-test';
-import { Reporter } from './types/reporter';
-import { TestResult } from './types/test-result';
 
 export class Runner extends EventEmitter {
   private running: boolean;

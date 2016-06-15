@@ -1,5 +1,5 @@
+import { Test } from 'beater-reporter';
 import { Promise } from '../globals';
-import { Test } from './test';
 import { TestFn } from './test-fn';
 
 export interface InternalTest extends Test {

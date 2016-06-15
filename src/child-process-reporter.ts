@@ -1,8 +1,6 @@
 import { process } from './globals';
 import { Message } from './types/message';
-import { Reporter } from './types/reporter';
-import { Test } from './types/test';
-import { TestResult } from './types/test-result';
+import { Reporter, Test, TestResult } from 'beater-reporter';
 
 export class ChildProcessReporter implements Reporter {
   constructor() {

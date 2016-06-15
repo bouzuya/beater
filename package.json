@@ -16,10 +16,11 @@
   "bugs": {
     "url": "https://github.com/bouzuya/beater/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "beater-reporter": "0.3.0"
+  },
   "devDependencies": {
     "beater-cli": "0.1.2",
-    "beater-reporter": "0.2.0",
     "espower-loader": "1.0.0",
     "parallelshell": "2.0.0",
     "power-assert": "1.4.1",

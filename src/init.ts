@@ -1,7 +1,7 @@
+import { Reporter } from 'beater-reporter';
 import { process } from './globals';
 import { ChildProcessReporter } from './child-process-reporter';
 import { FixtureHelper } from './types/fixture-helper';
-import { Reporter } from './types/reporter';
 import { TestHelper } from './types/test-helper';
 import { initFixture, initTest } from './helpers';
 import { Runner } from './runner';
