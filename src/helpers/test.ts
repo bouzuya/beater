@@ -1,11 +1,8 @@
-import { Promise } from '../globals/promise';
 import { Runner } from '../runner';
-import { TestFn } from '../types/test-fn';
+import { TestHelper } from '../types/test-helper';
 
-export type TestHelper = (name: string, fn: TestFn) => void;
-
-const init = (runner: Runner): (name: string, fn: TestFn) => void => {
-  return (name: string, fn: TestFn): void => void runner.add({ name, fn });
+const init = (runner: Runner): TestHelper => {
+  return (name, fn) => void runner.add({ name, fn });
 };
 
 export { init };
