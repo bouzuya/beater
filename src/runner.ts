@@ -1,5 +1,4 @@
-import { process } from './globals/process';
-import { Promise } from './globals/promise';
+import { process, Promise } from './globals';
 import { EventEmitter } from 'events';
 import { InternalTest } from './types/internal-test';
 import { Reporter } from './types/reporter';

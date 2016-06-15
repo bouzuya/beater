@@ -1,4 +1,4 @@
-import { Promise } from '../globals/promise';
+import { Promise } from '../globals';
 
 export interface FixtureHelperOptions<T, U> {
   before?: () => T | Promise<T>;

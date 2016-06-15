@@ -1,4 +1,4 @@
-import { Promise } from '../globals/promise';
+import { Promise } from '../globals';
 import { Test } from './test';
 import { TestFn } from './test-fn';
 

@@ -1,4 +1,4 @@
-import { process } from './globals/process';
+import { process } from './globals';
 import { ChildProcessReporter } from './child-process-reporter';
 import { FixtureHelper } from './types/fixture-helper';
 import { Reporter } from './types/reporter';

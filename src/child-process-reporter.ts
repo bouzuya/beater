@@ -1,4 +1,4 @@
-import { process } from './globals/process';
+import { process } from './globals';
 import { Message } from './types/message';
 import { Reporter } from './types/reporter';
 import { Test } from './types/test';
