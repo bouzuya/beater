@@ -14,14 +14,6 @@
   },
   "files": [
     "./src/index.ts",
-    "./src/runners/server-runner/abort-promise-exception.ts",
-    "./test/fixture/empty.ts",
-    "./test/fixture/failure.ts",
-    "./test/fixture/success.ts",
-    "./test/lib/empty.ts",
-    "./test/lib/failure.ts",
-    "./test/lib/fixture.ts",
-    "./test/lib/success.ts",
     "./typings/index.d.ts"
   ]
 }
