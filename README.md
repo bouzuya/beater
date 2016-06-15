@@ -70,10 +70,25 @@ $ $(npm bin)/beater
 
 See [doc/](doc/README.md).
 
+## Related Project
+
+- [bouzuya/beater-cli][] ... A command-line interface for beater.
+- [bouzuya/beater-cli-reporter][] ... beater-cli default reporter.
+- [bouzuya/beater-reporter][] ... beater reporter interface.
+
+[bouzuya/beater-cli]: https://github.com/bouzuya/beater-cli
+[bouzuya/beater-cli-reporter]: https://github.com/bouzuya/beater-cli-reporter
+[bouzuya/beater-reporter]: https://github.com/bouzuya/beater-reporter
+
 ## Badges
 
 [![npm version][npm-badge-url]][npm-url]
 [![Circle CI][circleci-badge-url]][circleci-url]
+
+[npm-badge-url]: https://badge.fury.io/js/beater.svg
+[npm-url]: https://www.npmjs.com/package/beater
+[circleci-badge-url]: https://circleci.com/gh/bouzuya/beater.svg?style=svg
+[circleci-url]: https://circleci.com/gh/bouzuya/beater
 
 ## License
 
@@ -86,7 +101,3 @@ See [doc/](doc/README.md).
 [user]: https://github.com/bouzuya
 [email]: mailto:m@bouzuya.net
 [url]: http://bouzuya.net
-[npm-badge-url]: https://badge.fury.io/js/beater.svg
-[npm-url]: https://www.npmjs.com/package/beater
-[circleci-badge-url]: https://circleci.com/gh/bouzuya/beater.svg?style=svg
-[circleci-url]: https://circleci.com/gh/bouzuya/beater
