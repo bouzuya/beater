@@ -12,6 +12,7 @@ const init = (reporter?: Reporter): {
 } => {
   const r = typeof process.send === 'undefined'
     ? reporter : new ChildProcessReporter();
+  if (typeof r === 'undefined') throw new Error('no reporter');
   const runner = new Runner(r);
   const fixture = initFixture();
   const test = initTest(runner);
