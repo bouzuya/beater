@@ -20,6 +20,7 @@
     "./test/helpers/fixture.ts",
     "./test/helpers/index.ts",
     "./test/helpers/test.ts",
+    "./test/child-process-reporter.ts",
     "./typings/index.d.ts"
   ]
 }
