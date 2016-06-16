@@ -1,4 +1,4 @@
 /.tmp/
 /lib/
-/node_modules/
 /typings/
+node_modules/
