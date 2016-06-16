@@ -3,7 +3,7 @@
 \1. install `nyc`
 
 ```
-$ npm install beater -D
+$ npm install beater beater-cli -D
 $ npm install nyc -D
 ```
 

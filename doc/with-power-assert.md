@@ -3,7 +3,7 @@
 \1. install `power-assert` and `espower-loader`
 
 ```
-$ npm install beater -D
+$ npm install beater beater-cli -D
 $ npm install power-assert espower-loader -D
 ```
 

@@ -1,6 +1,6 @@
 # `package.json` and `.beaterrc` (config file) examples
 
-beater can parse `JSON` only. beater cann't parse JSON5 file.
+`beater-cli` can parse `JSON` only. beater cann't parse JSON5 file.
 
 ## `package.json`
 
@@ -11,11 +11,11 @@ beater can parse `JSON` only. beater cann't parse JSON5 file.
   "scripts": {
     "test": "beater"
   },
-  "eater": {
+  "beater": {
     "dir": "test/",
     "ext": ".js",
     "procs": 10,
-    "reporter": "beater-reporter-tap"
+    "reporter": "beater-tap-reporter"
     "require": [
       "./enable-power-assert.js",
       "./enable-jsx.js"
@@ -31,7 +31,7 @@ beater can parse `JSON` only. beater cann't parse JSON5 file.
   "dir": "test/",
   "ext": ".js",
   "procs": 10,
-  "reporter": "beater-reporter-tap"
+  "reporter": "beater-tap-reporter"
   "require": [
     "./enable-power-assert.js",
     "./enable-jsx.js"
@@ -50,7 +50,7 @@ You can use `files` instead of `dir` and `ext`.
     "test/lib/bar.js"
   ],
   "procs": 10,
-  "reporter": "beater-reporter-tap"
+  "reporter": "beater-tap-reporter"
   "require": [
     "./enable-power-assert.js",
     "./enable-jsx.js"

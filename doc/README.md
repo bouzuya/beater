@@ -2,12 +2,10 @@
 
 ## `test()` and `fixture()`
 
-See: [README](README.md).
-
 ### `test()`
 
 ```
-test<T>(name: string, test: () => T | Promise<T>): void
+test(name: string, fn: <T>() => T | Promise<T>): void
 ```
 
 ### `fixture()`
@@ -22,7 +20,7 @@ fixture<T, U>(
 ): () => Promise<void>
 ```
 
-## options
+## `beater-cli` options
 
 - `beater` (command-line) options
     - `CommandLineOptions` in [`../src/options.ts`](../src/options.ts).
@@ -30,11 +28,8 @@ fixture<T, U>(
 - `package.json` and `.beaterrc` (config file) options
     - `ConfigFileOptions` & `CommandLineOptions` in [`../src/options.ts`](../src/options.ts).
     - [`package.json` and `.beaterrc` examples](config-file-example.md)
-- `Beater` (api) options
-    - `Options` in [`../src/options.ts`](../src/options.ts).
-    - [`Beater` example](api-example.md)
 
-## recipes
+## `beater-cli` recipes
 
 - [`beater` with `babel` (JSX)](with-jsx.md)
 - [`beater` with `babel` & `power-assert`](with-babel-and-power-assert.md)

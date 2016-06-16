@@ -3,7 +3,7 @@
 \1. install `babel-register`
 
 ```
-$ npm install beater -D
+$ npm install beater beater-cli -D
 $ npm install babel-register -D
 ```
 

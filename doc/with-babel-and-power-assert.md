@@ -3,7 +3,7 @@
 \1. install `babel-register` and `babel-preset-power-assert`
 
 ```
-$ npm install beater -D
+$ npm install beater beater-cli -D
 $ npm install babel-register babel-preset-power-assert -D
 ```
 

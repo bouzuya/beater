@@ -122,7 +122,7 @@ $ open index.html
 
 ## Documents
 
-See [doc/](doc/README.md).
+See [doc/](doc/README.md) or [examples/](examples/).
 
 ## Related Packages
 
