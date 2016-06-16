@@ -1,46 +1,39 @@
-# beater (beta)
-
 ![beater logo][beater-logo]
 
-**b**ouzuya's **ea**sy **t**est runn**er**. beater is inspired by [eater][yosuke-furukawa/eater].
-
-I highly recommend the original eater ([yosuke-furukawa/eater][]).
+beater: **b**ouzuya's **ea**sy **t**est runn**er**. beater is inspired by [eater][yosuke-furukawa/eater].
 
 [yosuke-furukawa/eater]: https://github.com/yosuke-furukawa/eater
 [beater-logo]: https://cloud.githubusercontent.com/assets/1221346/15892977/e69386f0-2db7-11e6-9163-bcb2f2471581.png
 
 ## Features
 
-- Multi-process: See [eater][yosuke-furukawa/eater]'s document.
-- Happy async: See [eater][yosuke-furukawa/eater]'s document.
-- Require `test()`: You must use `test()`. It is the most biggest difference between eater and beater.
-- Promise support: You can use a `Promise`. `done()` and `fail()` is removed.
+- Simple API: `test()` and `fixture()`. `assert` is not included.
+- Browser support: use any module bundler. browserify etc...
+- Node.js support: `beater-cli` run tests by multi-process.
 - TypeScript support: `*.d.ts` is included.
-- Reporter improved: A custom reporters can control the all runner's output.
 
 ## Usage
 
-### Install
+### for Node.js
+
+#### 1. Install
 
 ```
 $ npm install beater beater-cli
 ```
 
-### Write some tests
+#### 2. Write test
 
-```ts
-// test/helper.ts
-import beater from 'beater';
-
-const { test, fixture } = beater();
-
-export { test, fixture };
+```js
+// test/helper.js
+const { test, fixture } = require('beater').default();
+module.exports = { test, fixture };
 ```
 
-```ts
-// test/foo.ts
-import assert from 'power-assert';
-import { test, fixture } from './helper';
+```js
+// test/foo.js
+const assert = require('assert');
+const { test, fixture } = require('./helper');
 
 test('simple test', () => {
   assert(1 + 1 === 20); // fail
@@ -60,17 +53,78 @@ test('before/after', fixture({ before, after }, context => {
 }));
 ```
 
-### Run
+#### 3. Run
 
 ```
 $ $(npm bin)/beater
 ```
 
-### More...
+### for Browser
+
+#### 1. Install
+
+```
+$ npm install beater beater-html-reporter browserify
+```
+
+#### 2. Write test
+
+```ts
+// test/helper.js
+const reporter = require('beater-html-reporter').default;
+const { test, fixture } = require('beater').default(reporter());
+module.exports = { test, fixture };
+```
+
+```ts
+// test/foo.js
+const assert = require('assert');
+const { test, fixture } = require('./helper');
+
+test('simple test', () => {
+  assert(1 + 1 === 20); // fail
+});
+
+test('async test', () => {
+  return new Promise(resolve => {
+    assert(1 + 1 === 200); // fail
+    resolve();
+  });
+});
+
+const before = () => 3;
+const after = context => {};
+test('before/after', fixture({ before, after }, context => {
+  assert(context === 3); // ok
+}));
+```
+
+```
+// index.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>beater test</title>
+  </head>
+  <body>
+    <script src="bundle.js"></script>
+  </body>
+</html>
+```
+
+#### 3. Run
+
+```
+$ $(npm bin)/browserify test/foo.js -o bundle.js
+$ open index.html
+```
+
+## Documents
 
 See [doc/](doc/README.md).
 
-## Related Project
+## Related Packages
 
 - [bouzuya/beater-cli][] ... A command-line interface for beater.
 - [bouzuya/beater-cli-reporter][] ... beater-cli default reporter.
