@@ -22,6 +22,7 @@
     "./test/helpers/test.ts",
     "./test/child-process-reporter.ts",
     "./test/init.ts",
+    "./test/runner.ts",
     "./typings/index.d.ts"
   ]
 }
