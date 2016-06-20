@@ -6,7 +6,7 @@
     "moduleResolution": "node",
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "outDir": ".tmp",
+    "outDir": ".tmp/es2015/",
     "removeComments": true,
     "rootDir": ".",
     "sourceMap": false,

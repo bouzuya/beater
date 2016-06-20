@@ -7,8 +7,13 @@
     "email": "m@bouzuya.net",
     "url": "http://bouzuya.net/"
   },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "beater": {
-    "dir": "./.tmp/test/",
+    "dir": "./.tmp/es5/test/",
     "require": [
       "./scripts/enable-power-assert.js"
     ]
@@ -20,7 +25,10 @@
     "beater-reporter": "0.3.0"
   },
   "devDependencies": {
+    "babel-cli": "6.10.1",
+    "babel-preset-es2015": "6.9.0",
     "beater-cli": "0.2.2",
+    "cpx": "1.3.1",
     "espower-loader": "1.0.0",
     "parallelshell": "2.0.0",
     "power-assert": "1.4.1",
@@ -48,14 +56,16 @@
     "url": "https://github.com/bouzuya/beater.git"
   },
   "scripts": {
-    "build": "tsc && npm run copy",
+    "babel": "babel .tmp/es2015/ -d .tmp/es5/",
+    "build": "tsc && npm run babel && npm run copy",
     "clean": "rm -rf .tmp/ lib/",
-    "copy": "([ -d lib/ ] || mkdir -p lib/) && cp -R .tmp/src/* lib/",
-    "prepublish": "typings install && npm run build",
+    "copy": "cpx '.tmp/es5/src/**/*.js' lib/ && cpx '.tmp/es2015/src/**/*.d.ts' lib/",
+    "prepublish": "typings install && npm run clean && npm run build",
     "test": "beater",
-    "watch": "parallelshell 'tsc --watch' 'npm run watch-copy' 'npm run watch-test'",
-    "watch-copy": "watch --wait 2 'npm run copy' '.tmp/src/'",
-    "watch-test": "watch --wait 2 'npm test' '.tmp/test/'"
+    "watch": "parallelshell 'tsc --watch' 'npm run watch-babel' 'npm run watch-copy' 'npm run watch-test'",
+    "watch-babel": "npm run babel -- --watch",
+    "watch-copy": "watch --wait 2 'npm run copy' '.tmp/es5/src/'",
+    "watch-test": "watch --wait 2 'npm test' '.tmp/es5/test/'"
   },
   "typings": "lib/index.d.ts"
 }
