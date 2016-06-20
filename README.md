@@ -139,12 +139,12 @@ See [doc/](doc/README.md) or [examples/](examples/).
 ## Badges
 
 [![npm version][npm-badge-url]][npm-url]
-[![Circle CI][circleci-badge-url]][circleci-url]
+[![Travis CI][travisci-badge-url]][travisci-url]
 
 [npm-badge-url]: https://badge.fury.io/js/beater.svg
 [npm-url]: https://www.npmjs.com/package/beater
-[circleci-badge-url]: https://circleci.com/gh/bouzuya/beater.svg?style=svg
-[circleci-url]: https://circleci.com/gh/bouzuya/beater
+[travisci-badge-url]: https://travis-ci.org/bouzuya/beater.svg?branch=master
+[travisci-url]: https://travis-ci.org/bouzuya/beater
 
 ## License
 
