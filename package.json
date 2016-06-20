@@ -1,7 +1,7 @@
 {
   "name": "beater",
   "description": "beater: bouzuya's easy test runner. it is inspired by eater.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": {
     "name": "bouzuya",
     "email": "m@bouzuya.net",
