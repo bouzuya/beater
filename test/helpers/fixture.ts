@@ -20,7 +20,7 @@ const before = (): Context => {
   return { sandbox, before, after, test };
 };
 
-const after = ({ sandbox }: Context) => sandbox.restore();
+const after = ({ sandbox }: Context) => void sandbox.restore();
 
 test('helpers/fixture - without after', fixture({ before, after }, ({
   before, test

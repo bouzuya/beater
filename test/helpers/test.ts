@@ -24,7 +24,7 @@ test('helpers/test - calls runner.add()', fixture({ before, after }, ({
 }) => {
   const t = init(runner);
   const name = 'name 1';
-  const fn = (): void => void 0;
+  const fn = (): undefined => void 0;
   t(name, fn);
   assert(add.callCount === 1);
   assert(add.getCall(0).args[0].name === name);

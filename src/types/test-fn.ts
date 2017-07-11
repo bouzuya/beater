@@ -1,3 +1,8 @@
 export interface TestFn {
-  <T>(): T | Promise<T>;
+  <T>(): void | T | Promise<T>;
+}
+
+export interface NormalizedTestFn {
+  <T>(): Promise<T>;
+  (): Promise<void>;
 }

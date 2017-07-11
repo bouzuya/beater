@@ -54,11 +54,15 @@ export class Runner extends EventEmitter {
     }
     const test = this.pendingTests.shift();
     this.reporter.testStarted({ name: test.name });
-    new Promise((resolve, reject) => {
-      Promise.resolve(test.fn()).then(resolve, reject);
-    })
+    Promise.resolve()
+      .then((): Promise<void> => {
+        const x = test.fn();
+        return typeof x === 'undefined' // is void
+          ? Promise.resolve()
+          : Promise.resolve(x).then((): void => void 0);
+      })
       .then(() => void 0, this.serializeError.bind(this))
-      .then(error => {
+      .then((error: Error | undefined) => {
         const result: TestResult = { test: { name: test.name }, error };
         this.finishedTests.push(result);
         this.reporter.testFinished(result);

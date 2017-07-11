@@ -19,7 +19,7 @@ const before = (): Context => {
   return { sandbox, send, reporter };
 };
 
-const after = ({ sandbox }: Context) => sandbox.restore();
+const after = ({ sandbox }: Context) => void sandbox.restore();
 
 test('child-process-reporter - started', fixture({ before, after }, ({
   reporter, send

@@ -1,5 +1,6 @@
 import { FixtureHelper } from '../types/fixture-helper';
 import { FixtureHelperOptions } from '../types/fixture-helper-options';
+import { NormalizedTestFn } from '../types/test-fn';
 
 const p = (f: Function, ...args: any[]): Promise<any> => {
   return new Promise((resolve, reject) => {
@@ -10,7 +11,7 @@ const p = (f: Function, ...args: any[]): Promise<any> => {
 const fixture: FixtureHelper = <T, U>(
   options: FixtureHelperOptions<T, U>,
   test: (context?: T) => U | Promise<U>
-): () => Promise<void> => {
+): NormalizedTestFn => {
   const before = options.before ? options.before : (): T => void 0;
   const after = options.after ? options.after : (): void => void 0;
   return () =>
