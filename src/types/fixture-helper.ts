@@ -1,5 +1,4 @@
 import { FixtureHelperOptions } from './fixture-helper-options';
-import { Promise } from '../globals';
 
 export interface FixtureHelper {
   <T, U>(

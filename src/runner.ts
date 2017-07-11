@@ -1,5 +1,5 @@
 import { Reporter, TestResult } from 'beater-reporter';
-import { process, Promise } from './globals';
+import { process } from './globals';
 import { EventEmitter } from 'events';
 import { InternalTest } from './types/internal-test';
 

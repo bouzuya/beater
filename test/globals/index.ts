@@ -1,6 +1,6 @@
 import * as assert from 'power-assert';
 import { test } from '../helper';
-import { process, Promise } from '../../src/globals';
+import { process } from '../../src/globals';
 
 test('globals', () => {
   assert(process);

@@ -1,4 +1,3 @@
-import { Promise } from '../globals';
 import { FixtureHelper } from '../types/fixture-helper';
 import { FixtureHelperOptions } from '../types/fixture-helper-options';
 
