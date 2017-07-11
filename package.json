@@ -30,7 +30,7 @@
     "beater-cli": "0.2.4",
     "cpx": "1.3.1",
     "espower-loader": "1.0.0",
-    "parallelshell": "2.0.0",
+    "npm-run-all": "4.0.2",
     "power-assert": "1.4.1",
     "proxyquire": "1.7.9",
     "sinon": "1.17.4",
@@ -62,10 +62,11 @@
     "copy": "cpx '.tmp/es5/src/**/*.js' lib/ && cpx '.tmp/es2015/src/**/*.d.ts' lib/",
     "prepublish": "typings install && npm run clean && npm run build",
     "test": "beater",
-    "watch": "parallelshell 'tsc --watch' 'npm run watch-babel' 'npm run watch-copy' 'npm run watch-test'",
-    "watch-babel": "npm run babel -- --watch",
-    "watch-copy": "watch --wait 2 'npm run copy' '.tmp/es5/src/'",
-    "watch-test": "watch --wait 2 'npm test' '.tmp/es5/test/'"
+    "watch": "npm-run-all -p \"watch:*\"",
+    "watch:babel": "npm run babel -- --watch",
+    "watch:copy": "watch --wait 2 'npm run copy' '.tmp/es5/src/'",
+    "watch:test": "watch --wait 2 'npm test' '.tmp/es5/test/'",
+    "watch:ts": "tsc --watch"
   },
   "typings": "lib/index.d.ts"
 }
