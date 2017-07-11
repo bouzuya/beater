@@ -25,6 +25,9 @@
     "beater-reporter": "0.3.0"
   },
   "devDependencies": {
+    "@types/node": "8.0.10",
+    "@types/proxyquire": "1.3.27",
+    "@types/sinon": "2.3.2",
     "babel-cli": "6.10.1",
     "babel-preset-es2015": "6.9.0",
     "beater-cli": "0.2.4",
@@ -32,10 +35,9 @@
     "espower-loader": "1.0.0",
     "npm-run-all": "4.0.2",
     "power-assert": "1.4.1",
-    "proxyquire": "1.7.9",
-    "sinon": "1.17.4",
+    "proxyquire": "1.8.0",
+    "sinon": "2.3.7",
     "typescript": "1.8.10",
-    "typings": "1.0.4",
     "watch": "0.18.0"
   },
   "files": [
@@ -60,7 +62,7 @@
     "build": "tsc && npm run babel && npm run copy",
     "clean": "rm -rf .tmp/ lib/",
     "copy": "cpx '.tmp/es5/src/**/*.js' lib/ && cpx '.tmp/es2015/src/**/*.d.ts' lib/",
-    "prepublish": "typings install && npm run clean && npm run build",
+    "prepublish": "npm run clean && npm run build",
     "test": "beater",
     "watch": "npm-run-all -p \"watch:*\"",
     "watch:babel": "npm run babel -- --watch",
