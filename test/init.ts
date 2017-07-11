@@ -1,5 +1,5 @@
 import * as assert from 'power-assert';
-import { test, fixture } from './helper';
+import { test } from './helper';
 import { init } from '../src/init';
 
 // TODO:
