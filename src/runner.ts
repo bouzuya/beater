@@ -25,7 +25,7 @@ export class Runner extends EventEmitter {
         const error = new Error('Pending test exists, but process exit');
         const serialized = this.serializeError(error);
         this.reporter.finished([{
-          test: { name: undefined },
+          test: { name: 'undefined' }, // FIXME
           error: serialized
         }]);
       }
@@ -52,7 +52,7 @@ export class Runner extends EventEmitter {
     if (this.pendingTests.length === this.tests.length) {
       this.reporter.started();
     }
-    const test = this.pendingTests.shift();
+    const test = this.pendingTests.shift()!;
     this.reporter.testStarted({ name: test.name });
     Promise.resolve()
       .then((): Promise<void> => {
