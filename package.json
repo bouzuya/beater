@@ -60,7 +60,9 @@
   },
   "scripts": {
     "build": "npm-run-all -s \"build:tmp:ts\" \"build:tmp:es2015\" \"build:lib\"",
-    "build:lib": "cpx '.tmp/es5/src/**/*.js' lib/ && cpx '.tmp/es2015/src/**/*.d.ts' lib/",
+    "build:lib": "npm-run-all -p \"build:lib:*\"",
+    "build:lib:dts": "cpx \".tmp/es2015/src/**/*.d.ts\" \"lib\"",
+    "build:lib:js": "cpx \".tmp/es5/src/**/*.js\" \"lib\"",
     "build:tmp:es2015": "babel .tmp/es2015/ -d .tmp/es5/",
     "build:tmp:ts": "tsc",
     "clean": "rm -rf .tmp/ lib/",
