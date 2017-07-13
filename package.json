@@ -25,20 +25,21 @@
     "beater-reporter": "0.3.0"
   },
   "devDependencies": {
-    "@types/node": "8.0.10",
+    "@types/node": "^8.0.12",
+    "@types/power-assert": "^1.4.29",
     "@types/proxyquire": "1.3.27",
     "@types/sinon": "2.3.2",
-    "babel-cli": "6.10.1",
-    "babel-preset-es2015": "6.9.0",
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
     "beater-cli": "0.2.4",
-    "cpx": "1.3.1",
+    "cpx": "^1.5.0",
     "espower-loader": "1.0.0",
     "npm-run-all": "4.0.2",
-    "power-assert": "1.4.1",
+    "power-assert": "^1.4.4",
     "proxyquire": "1.8.0",
-    "sinon": "2.3.7",
+    "sinon": "^2.3.8",
     "typescript": "2.4.1",
-    "watch": "0.18.0"
+    "watch": "^1.0.2"
   },
   "files": [
     "lib/"
