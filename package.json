@@ -66,7 +66,7 @@
     "build:tmp:es2015": "babel .tmp/es2015/ -d .tmp/es5/",
     "build:tmp:ts": "tsc",
     "clean": "rm -rf .tmp/ lib/",
-    "prepublish": "npm run clean && npm run build",
+    "prepublish": "npm-run-all -s \"clean\" \"build\"",
     "test": "beater",
     "watch": "npm-run-all -p \"watch:*\"",
     "watch:es2015": "npm run build:tmp:es2015 -- --watch",
