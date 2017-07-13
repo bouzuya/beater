@@ -59,15 +59,16 @@
     "url": "https://github.com/bouzuya/beater.git"
   },
   "scripts": {
-    "babel": "babel .tmp/es2015/ -d .tmp/es5/",
-    "build": "tsc && npm run babel && npm run copy",
+    "build": "npm-run-all -s \"build:tmp:ts\" \"build:tmp:es2015\" \"build:lib\"",
+    "build:lib": "cpx '.tmp/es5/src/**/*.js' lib/ && cpx '.tmp/es2015/src/**/*.d.ts' lib/",
+    "build:tmp:es2015": "babel .tmp/es2015/ -d .tmp/es5/",
+    "build:tmp:ts": "tsc",
     "clean": "rm -rf .tmp/ lib/",
-    "copy": "cpx '.tmp/es5/src/**/*.js' lib/ && cpx '.tmp/es2015/src/**/*.d.ts' lib/",
     "prepublish": "npm run clean && npm run build",
     "test": "beater",
     "watch": "npm-run-all -p \"watch:*\"",
-    "watch:babel": "npm run babel -- --watch",
-    "watch:copy": "watch --wait 2 'npm run copy' '.tmp/es5/src/'",
+    "watch:es2015": "npm run build:tmp:es2015 -- --watch",
+    "watch:lib": "watch --wait 2 'npm run build:lib' '.tmp/es5/src/'",
     "watch:test": "watch --wait 2 'npm test' '.tmp/es5/test/'",
     "watch:ts": "tsc --watch"
   },
