@@ -37,6 +37,7 @@
     "npm-run-all": "4.0.2",
     "power-assert": "^1.4.4",
     "proxyquire": "1.8.0",
+    "rimraf": "^2.6.1",
     "sinon": "^2.3.8",
     "typescript": "2.4.1",
     "watch": "^1.0.2"
@@ -65,7 +66,7 @@
     "build:lib:js": "cpx \".tmp/es5/src/**/*.js\" \"lib\"",
     "build:tmp:es2015": "babel .tmp/es2015/ -d .tmp/es5/",
     "build:tmp:ts": "tsc",
-    "clean": "rm -rf .tmp/ lib/",
+    "clean": "rimraf \".tmp\" \"lib\"",
     "prepublish": "npm-run-all -s \"clean\" \"build\"",
     "test": "beater",
     "watch": "npm-run-all -p \"watch:*\"",
