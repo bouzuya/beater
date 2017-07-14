@@ -9,40 +9,30 @@ Twitter hashtag is [#beaterjs](https://twitter.com/hashtag/beaterjs).
 
 ## Features
 
-- Simple API: `test()` and `fixture()`. `assert` is not included.
-- Browser support: use any module bundler. browserify etc...
-- Node.js support: `beater-cli` run tests by multi-process.
+- Simple API: `test()`, `fixture()`, and `run()` only. `assert` is not included.
 - TypeScript support: `*.d.ts` is included.
 
 ## Usage
 
-### for Node.js
-
-#### 1. Install
+### 1. Install
 
 ```
-$ npm install beater beater-cli
+$ npm install beater
 ```
 
-#### 2. Write test
+### 2. Write test
 
-```js
-// test/helper.js
-const { test, fixture } = require('beater').default();
-module.exports = { test, fixture };
-```
-
-```js
-// test/foo.js
+```typescript
+// test/index.js
 const assert = require('assert');
-const { test, fixture } = require('./helper');
+const { fixture, run, test } = require('beater');
 
-test('simple test', () => {
+const test1 = test('simple test', () => {
   assert(1 + 1 === 20); // fail
 });
 
-test('async test', () => {
-  return new Promise(resolve => {
+const test2 = test('async test', () => {
+  return new Promise((resolve) => {
     assert(1 + 1 === 200); // fail
     resolve();
   });
@@ -50,76 +40,17 @@ test('async test', () => {
 
 const before = () => 3;
 const after = context => {};
-test('before/after', fixture({ before, after }, context => {
+const test3 = test('before/after', fixture({ before, after }, (context) => {
   assert(context === 3); // ok
 }));
+
+run([test1, test2, test3]);
 ```
 
-#### 3. Run
+### 3. Run
 
 ```
-$ $(npm bin)/beater
-```
-
-### for Browser
-
-#### 1. Install
-
-```
-$ npm install beater beater-html-reporter browserify
-```
-
-#### 2. Write test
-
-```ts
-// test/helper.js
-const reporter = require('beater-html-reporter').default;
-const { test, fixture } = require('beater').default(reporter());
-module.exports = { test, fixture };
-```
-
-```ts
-// test/foo.js
-const assert = require('assert');
-const { test, fixture } = require('./helper');
-
-test('simple test', () => {
-  assert(1 + 1 === 20); // fail
-});
-
-test('async test', () => {
-  return new Promise(resolve => {
-    assert(1 + 1 === 200); // fail
-    resolve();
-  });
-});
-
-const before = () => 3;
-const after = context => {};
-test('before/after', fixture({ before, after }, context => {
-  assert(context === 3); // ok
-}));
-```
-
-```
-// index.html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>beater test</title>
-  </head>
-  <body>
-    <script src="bundle.js"></script>
-  </body>
-</html>
-```
-
-#### 3. Run
-
-```
-$ $(npm bin)/browserify test/foo.js -o bundle.js
-$ open index.html
+$ node test/index.js
 ```
 
 ## Documents
