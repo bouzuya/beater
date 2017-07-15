@@ -11,7 +11,7 @@ const test1 = test('simple test', () => {
 
 const test2 = test('async test', () => {
   return new Promise((resolve) => {
-    assert(1 === 1 + 1);
+    assert(1 === 1);
     resolve();
   });
 });
