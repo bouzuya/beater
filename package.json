@@ -9,13 +9,8 @@
   },
   "babel": {
     "presets": [
-      "es2015"
-    ]
-  },
-  "beater": {
-    "dir": "./.tmp/es5/test/",
-    "require": [
-      "./scripts/enable-power-assert.js"
+      "es2015",
+      "babel-preset-power-assert"
     ]
   },
   "bugs": {
@@ -25,16 +20,16 @@
     "beater-reporter": "0.3.0"
   },
   "devDependencies": {
-    "@types/node": "^8.0.12",
+    "@types/node": "^8.0.13",
     "@types/power-assert": "^1.4.29",
     "@types/proxyquire": "1.3.27",
     "@types/sinon": "2.3.2",
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
-    "beater-cli": "0.2.4",
+    "babel-preset-power-assert": "^1.0.0",
     "cpx": "^1.5.0",
-    "espower-loader": "1.0.0",
     "npm-run-all": "4.0.2",
+    "nyc": "^11.0.3",
     "power-assert": "^1.4.4",
     "proxyquire": "1.8.0",
     "rimraf": "^2.6.1",
@@ -68,11 +63,11 @@
     "build:tmp:ts": "tsc",
     "clean": "rimraf \".tmp\" \"lib\"",
     "prepublish": "npm-run-all -s \"clean\" \"build\"",
-    "test": "beater",
+    "test": "nyc node .tmp/es5/test/index.js",
     "watch": "npm-run-all -p \"watch:*\"",
     "watch:es2015": "npm run build:tmp:es2015 -- --watch",
     "watch:lib": "watch --wait 2 'npm run build:lib' '.tmp/es5/src/'",
-    "watch:test": "watch --wait 2 'npm test' '.tmp/es5/test/'",
+    "watch:test": "watch --wait 2 'npm test' '.tmp/es5/src' '.tmp/es5/test'",
     "watch:ts": "tsc --watch"
   },
   "typings": "lib/index.d.ts"
