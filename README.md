@@ -55,7 +55,9 @@ $ node test/index.js
 ## Related Packages
 
 - [bouzuya/beater-reporter][] ... beater reporter interface.
-- [bouzuya/beater-tap-reporter][] ... beater TAP reporter.
+- [bouzuya/beater-tap-reporter][] ... beater TAP reporter (default reporter) .
+  - You can pipe to [any TAP reporter](https://github.com/sindresorhus/awesome-tap#reporters).
+  - e.g. `$ node test/index.js | tap-dot`
 - <del>[bouzuya/beater-cli][] ... DEPRECATED. A command-line interface for beater. </del>
 - <del>[bouzuya/beater-cli-reporter][] ... DEPRECATED. beater-cli default reporter.</del>
 
