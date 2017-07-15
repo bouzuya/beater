@@ -54,13 +54,15 @@ $ node test/index.js
 
 ## Related Packages
 
-- [bouzuya/beater-cli][] ... A command-line interface for beater.
-- [bouzuya/beater-cli-reporter][] ... beater-cli default reporter.
 - [bouzuya/beater-reporter][] ... beater reporter interface.
+- [bouzuya/beater-tap-reporter][] ... beater TAP reporter.
+- <del>[bouzuya/beater-cli][] ... DEPRECATED. A command-line interface for beater. </del>
+- <del>[bouzuya/beater-cli-reporter][] ... DEPRECATED. beater-cli default reporter.</del>
 
 [bouzuya/beater-cli]: https://github.com/bouzuya/beater-cli
 [bouzuya/beater-cli-reporter]: https://github.com/bouzuya/beater-cli-reporter
 [bouzuya/beater-reporter]: https://github.com/bouzuya/beater-reporter
+[bouzuya/beater-tap-reporter]: https://github.com/bouzuya/beater-tap-reporter
 
 ## Badges
 

@@ -6,7 +6,7 @@ import {
 import { Run } from './type/run';
 import { RunOptions } from './type/run-options';
 import { RunWithOptions } from './type/run-with-options';
-import { reporter as tapReporter } from './reporter/tap';
+import { reporter as tapReporter } from 'beater-tap-reporter';
 
 interface RunTest {
   (test: Test): Promise<TestResult>;
