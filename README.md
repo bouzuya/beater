@@ -9,8 +9,13 @@ Twitter hashtag is [#beaterjs](https://twitter.com/hashtag/beaterjs).
 
 ## Features
 
-- Simple API: `test()`, `fixture()`, and `run()` only. `assert` is not included.
-- TypeScript support: `*.d.ts` is included.
+- Only 3 functions:
+  1. `test()`
+  2. `run()`
+  3. `runWithOptions()`
+- You can use your favorite `assert()`.
+- You can use your favorite reporter.
+- You can use TypeScript (2.x `*.d.ts` is included).
 
 ## Usage
 
@@ -22,10 +27,10 @@ $ npm install beater
 
 ### 2. Write test
 
-```typescript
+```js
 // test/index.js
 const assert = require('assert');
-const { fixture, run, test } = require('beater');
+const { run, test } = require('beater');
 
 const test1 = test('simple test', () => {
   assert(1 + 1 === 20); // fail
@@ -38,13 +43,7 @@ const test2 = test('async test', () => {
   });
 });
 
-const before = () => 3;
-const after = context => {};
-const test3 = test('before/after', fixture({ before, after }, (context) => {
-  assert(context === 3); // ok
-}));
-
-run([test1, test2, test3]);
+run([test1, test2]).catch(() => process.exit(1));
 ```
 
 ### 3. Run
@@ -52,10 +51,6 @@ run([test1, test2, test3]);
 ```
 $ node test/index.js
 ```
-
-## Documents
-
-See [doc/](doc/README.md) or [examples/](examples/).
 
 ## Related Packages
 
