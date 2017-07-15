@@ -1,6 +1,4 @@
-import { Test } from '../type/test';
-import { TestReporter } from '../type/test-reporter';
-import { TestResult } from '../type/test-result';
+import { Test, TestReporter, TestResult } from 'beater-reporter';
 
 class TapLikeReporter {
   private tests: Test[];

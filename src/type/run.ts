@@ -1,5 +1,7 @@
-import { Test } from './test';
-import { TestResult } from './test-result';
+import {
+  Test,
+  TestResult
+} from 'beater-reporter';
 
 export interface Run {
   (tests: Test[]): Promise<TestResult[]>;

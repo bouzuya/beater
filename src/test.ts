@@ -1,6 +1,8 @@
-import { Test } from './type/test';
-import { TestFn } from './type/test-fn';
-import { TestMeta } from './type/test-meta';
+import {
+  Test,
+  TestFn,
+  TestMeta
+} from 'beater-reporter';
 
 const test = (name: string, fn: Function): Test => {
   const testMeta: TestMeta = new Map<string, string>([['name', name]]);

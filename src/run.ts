@@ -1,9 +1,11 @@
-import { Error } from './type/error';
+import {
+  Error,
+  Test,
+  TestResult
+} from 'beater-reporter';
 import { Run } from './type/run';
 import { RunOptions } from './type/run-options';
 import { RunWithOptions } from './type/run-with-options';
-import { Test } from './type/test';
-import { TestResult } from './type/test-result';
 import { reporter as tapReporter } from './reporter/tap';
 
 interface RunTest {

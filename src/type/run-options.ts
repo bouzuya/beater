@@ -1,4 +1,4 @@
-import { TestReporter } from './test-reporter';
+import { TestReporter } from 'beater-reporter';
 
 export interface RunOptions {
   reporter: TestReporter;
