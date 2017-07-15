@@ -17,14 +17,6 @@
     "target": "es2015"
   },
   "files": [
-    "./src/index.ts",
-    "./test/globals/index.ts",
-    "./test/globals/process.ts",
-    "./test/helpers/fixture.ts",
-    "./test/helpers/index.ts",
-    "./test/helpers/test.ts",
-    "./test/child-process-reporter.ts",
-    "./test/init.ts",
-    "./test/runner.ts"
+    "./src/index.ts"
   ]
 }
