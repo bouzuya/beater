@@ -1,6 +1,8 @@
 *.log
 /.tmp/
 /lib/
+/coverage/
+/.nyc_output/
 /typings/
 bundle.js
 node_modules/
