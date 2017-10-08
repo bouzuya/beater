@@ -630,9 +630,9 @@ beater-reporter@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/beater-reporter/-/beater-reporter-0.4.0.tgz#9042743ff52bdac246ff20afd1568152fa2996c0"
 
-beater-tap-reporter@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/beater-tap-reporter/-/beater-tap-reporter-1.0.2.tgz#bab433258db40ff6366bdc6d53cfd3c0b4c329ec"
+beater-tap-reporter@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/beater-tap-reporter/-/beater-tap-reporter-1.0.3.tgz#3e5c58ba4916b664500ffb715bfa7fa710e85ac6"
   dependencies:
     beater-reporter "^0.4.0"
 
