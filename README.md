@@ -54,6 +54,7 @@ $ node test/index.js
 
 ## Related Packages
 
+- [bouzuya/beater-helpers][] ... beater helper functions.
 - [bouzuya/beater-reporter][] ... beater reporter interface.
 - [bouzuya/beater-tap-reporter][] ... beater TAP reporter (default reporter) .
   - You can pipe to [any TAP reporter](https://github.com/sindresorhus/awesome-tap#reporters).
@@ -63,6 +64,7 @@ $ node test/index.js
 
 [bouzuya/beater-cli]: https://github.com/bouzuya/beater-cli
 [bouzuya/beater-cli-reporter]: https://github.com/bouzuya/beater-cli-reporter
+[bouzuya/beater-helpers]: https://github.com/bouzuya/beater-helpers
 [bouzuya/beater-reporter]: https://github.com/bouzuya/beater-reporter
 [bouzuya/beater-tap-reporter]: https://github.com/bouzuya/beater-tap-reporter
 
