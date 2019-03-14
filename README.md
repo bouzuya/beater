@@ -59,6 +59,7 @@ $ node test/index.js
 - [bouzuya/beater-tap-reporter][] ... beater TAP reporter (default reporter) .
   - You can pipe to [any TAP reporter](https://github.com/sindresorhus/awesome-tap#reporters).
   - e.g. `$ node test/index.js | tap-dot`
+- [bouzuya/create-beater-index][] ... beater index generator.
 - <del>[bouzuya/beater-cli][] ... DEPRECATED. A command-line interface for beater. </del>
 - <del>[bouzuya/beater-cli-reporter][] ... DEPRECATED. beater-cli default reporter.</del>
 
@@ -67,6 +68,7 @@ $ node test/index.js
 [bouzuya/beater-helpers]: https://github.com/bouzuya/beater-helpers
 [bouzuya/beater-reporter]: https://github.com/bouzuya/beater-reporter
 [bouzuya/beater-tap-reporter]: https://github.com/bouzuya/beater-tap-reporter
+[bouzuya/create-beater-index]: https://github.com/bouzuya/create-beater-index
 
 ## Badges
 
