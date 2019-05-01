@@ -36,7 +36,6 @@
     "@types/proxyquire": "^1.3.28",
     "@types/sinon": "^7.0.11",
     "babel-preset-power-assert": "^3.0.0",
-    "cpx": "^1.5.0",
     "npm-run-all": "^4.1.5",
     "nyc": "^14.0.0",
     "power-assert": "^1.6.1",
@@ -64,20 +63,18 @@
     "url": "https://github.com/bouzuya/beater.git"
   },
   "scripts": {
-    "build": "npm-run-all -s \"build:tmp:ts\" \"build:tmp:es2015\" \"build:lib\"",
-    "build:lib": "npm-run-all -p \"build:lib:*\"",
-    "build:lib:dts": "cpx \".tmp/es2015/src/**/*.d.ts\" \"lib\"",
-    "build:lib:js": "cpx \".tmp/es5/src/**/*.js\" \"lib\"",
-    "build:tmp:es2015": "babel .tmp/es2015/ -d .tmp/es5/",
-    "build:tmp:ts": "tsc",
+    "build": "npm-run-all -s \"build:es2015\" \"build:es5\" \"build:lib\"",
+    "build:es2015": "tsc",
+    "build:es5": "babel --out-dir .tmp/es5/ --source-maps inline .tmp/es2015/",
+    "build:lib": "babel --copy-files --no-comments --out-dir lib/ .tmp/es2015/src/",
     "clean": "rimraf \".tmp\" \"lib\"",
     "prepublish": "npm-run-all -s \"clean\" \"build\"",
     "test": "nyc node .tmp/es5/test/index.js",
     "watch": "npm-run-all -p \"watch:*\"",
-    "watch:es2015": "npm run build:tmp:es2015 -- --watch",
+    "watch:es2015": "npm run build:es2015 -- --watch",
+    "watch:es5": "npm run build:es5 -- --watch",
     "watch:lib": "watch --wait 2 'npm run build:lib' '.tmp/es5/src/'",
-    "watch:test": "watch --wait 2 'npm test' '.tmp/es5/src' '.tmp/es5/test'",
-    "watch:ts": "tsc --watch"
+    "watch:test": "watch --wait 2 'npm test' '.tmp/es5/src' '.tmp/es5/test'"
   },
   "typings": "lib/index.d.ts"
 }
