@@ -1,5 +1,5 @@
-import * as assert from 'power-assert';
-import * as sinon from 'sinon';
+import assert from 'power-assert';
+import sinon from 'sinon';
 import { Test, test } from '../src';
 
 const category = 'test() - ';

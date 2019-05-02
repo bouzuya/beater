@@ -1,4 +1,4 @@
-import * as assert from 'power-assert';
+import assert from 'power-assert';
 import { run, test } from '../src';
 import { tests as runTests } from './run';
 import { tests as runWithOptionsTests } from './run-with-options';
