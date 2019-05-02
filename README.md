@@ -2,8 +2,6 @@
 
 beater: **b**ouzuya's **ea**sy **t**est runn**er**. beater is inspired by [eater][yosuke-furukawa/eater].
 
-Twitter hashtag is [#beaterjs](https://twitter.com/hashtag/beaterjs).
-
 [yosuke-furukawa/eater]: https://github.com/yosuke-furukawa/eater
 [beater-logo]: https://cloud.githubusercontent.com/assets/1221346/15892977/e69386f0-2db7-11e6-9163-bcb2f2471581.png
 
@@ -86,8 +84,8 @@ $ node test/index.js
 
 ## Author
 
-[bouzuya][user] &lt;[m@bouzuya.net][email]&gt; ([http://bouzuya.net][url])
+[bouzuya][user] &lt;[m@bouzuya.net][email]&gt; ([https://bouzuya.net/][url])
 
 [user]: https://github.com/bouzuya
 [email]: mailto:m@bouzuya.net
-[url]: http://bouzuya.net
+[url]: https://bouzuya.net/
