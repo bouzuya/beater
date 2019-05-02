@@ -1,4 +1,5 @@
-*.log
+/*.log
+/*.tgz
 /.nyc_output/
 /.tmp/
 /coverage/
