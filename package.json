@@ -68,7 +68,7 @@
     "build:es5": "babel --out-dir .tmp/es5/ --source-maps inline .tmp/es2015/",
     "build:lib": "babel --copy-files --no-comments --out-dir lib/ .tmp/es2015/src/",
     "clean": "rimraf \".tmp\" \"lib\"",
-    "prepublish": "npm-run-all -s \"clean\" \"build\"",
+    "prepublishOnly": "npm-run-all -s \"clean\" \"build\"",
     "test": "nyc node .tmp/es5/test/index.js",
     "watch": "npm-run-all -p \"watch:*\"",
     "watch:es2015": "npm run build:es2015 -- --watch",
