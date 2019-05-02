@@ -5,7 +5,7 @@
   "author": {
     "name": "bouzuya",
     "email": "m@bouzuya.net",
-    "url": "http://bouzuya.net/"
+    "url": "https://bouzuya.net/"
   },
   "babel": {
     "presets": [
@@ -46,7 +46,7 @@
     "watch": "^1.0.2"
   },
   "files": [
-    "lib/"
+    "lib"
   ],
   "homepage": "https://github.com/bouzuya/beater",
   "keywords": [
@@ -75,6 +75,5 @@
     "watch:es5": "npm run build:es5 -- --watch",
     "watch:lib": "watch --wait 2 'npm run build:lib' '.tmp/es5/src/'",
     "watch:test": "watch --wait 2 'npm test' '.tmp/es5/src' '.tmp/es5/test'"
-  },
-  "typings": "lib/index.d.ts"
+  }
 }
