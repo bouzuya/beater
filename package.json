@@ -24,7 +24,7 @@
     "url": "https://github.com/bouzuya/beater/issues"
   },
   "dependencies": {
-    "beater-reporter": "^0.4.0",
+    "beater-reporter": "^1.0.0",
     "beater-tap-reporter": "^1.0.3"
   },
   "devDependencies": {
