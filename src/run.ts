@@ -15,14 +15,11 @@ interface RunTest {
 const error = (e: any): Error => {
   if (typeof e === 'object') {
     // ES: name (default: 'Error')
-    const name: string = typeof e.name === 'undefined'
-      ? 'Error' : e.name;
+    const name: string = e.name ?? 'Error';
     // ES: message (default: '')
-    const message: string = typeof e.message === 'undefined'
-      ? '' : e.message;
+    const message: string = e.message ?? '';
     // Node.js: stack
-    const stack: string = typeof e.stack === 'undefined'
-      ? '' : e.stack;
+    const stack: string = e.stack ?? '';
     return { message, name, stack };
   } else {
     const name = 'Error';
