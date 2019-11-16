@@ -6,13 +6,7 @@ import {
 
 const test = (name: string, fn: Function): Test => {
   const testMeta: TestMeta = new Map<string, string>([['name', name]]);
-  const testFn: TestFn = (): Promise<void> => {
-    try {
-      return Promise.resolve(fn());
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
+  const testFn: TestFn = async (): Promise<void> => fn();
   return { fn: testFn, meta: testMeta };
 };
 
