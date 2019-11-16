@@ -71,12 +71,12 @@ $ node test/index.js
 ## Badges
 
 [![npm version][npm-badge-url]][npm-url]
-[![Travis CI][travisci-badge-url]][travisci-url]
+[![Travis CI][travis-ci-badge-url]][travis-ci-url]
 
-[npm-badge-url]: https://badge.fury.io/js/beater.svg
+[npm-badge-url]: https://img.shields.io/npm/v/beater
 [npm-url]: https://www.npmjs.com/package/beater
-[travisci-badge-url]: https://travis-ci.org/bouzuya/beater.svg?branch=master
-[travisci-url]: https://travis-ci.org/bouzuya/beater
+[travis-ci-badge-url]: https://img.shields.io/travis/bouzuya/beater
+[travis-ci-url]: https://travis-ci.org/bouzuya/beater
 
 ## License
 
