@@ -20,7 +20,7 @@ beater: **b**ouzuya's **ea**sy **t**est runn**er**. beater is inspired by [eater
 ### 1. Install
 
 ```
-$ npm install beater
+$ npm install --save-dev beater
 ```
 
 ### 2. Write test
@@ -58,13 +58,17 @@ $ node test/index.js
   - You can pipe to [any TAP reporter](https://github.com/sindresorhus/awesome-tap#reporters).
   - e.g. `$ node test/index.js | tap-dot`
 - [bouzuya/create-beater-index][] ... beater index generator.
+- [bouzuya/beater-double][] ... beater test double functions (alpha) .
+- [bouzuya/beater-snapshot][] ... beater snapshot testing functions (alpha) .
 - <del>[bouzuya/beater-cli][] ... DEPRECATED. A command-line interface for beater. </del>
 - <del>[bouzuya/beater-cli-reporter][] ... DEPRECATED. beater-cli default reporter.</del>
 
-[bouzuya/beater-cli]: https://github.com/bouzuya/beater-cli
 [bouzuya/beater-cli-reporter]: https://github.com/bouzuya/beater-cli-reporter
+[bouzuya/beater-cli]: https://github.com/bouzuya/beater-cli
+[bouzuya/beater-double]: https://github.com/bouzuya/beater-double
 [bouzuya/beater-helpers]: https://github.com/bouzuya/beater-helpers
 [bouzuya/beater-reporter]: https://github.com/bouzuya/beater-reporter
+[bouzuya/beater-snapshot]: https://github.com/bouzuya/beater-snapshot
 [bouzuya/beater-tap-reporter]: https://github.com/bouzuya/beater-tap-reporter
 [bouzuya/create-beater-index]: https://github.com/bouzuya/create-beater-index
 
