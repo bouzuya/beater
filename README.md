@@ -31,14 +31,19 @@ const assert = require('assert');
 const { run, test } = require('beater');
 
 const test1 = test('simple test', () => {
-  assert(1 + 1 === 20); // fail
+  assert(1 === 1);
 });
 
-const test2 = test('async test', () => {
+const test2 = test('promise test', () => {
   return new Promise((resolve) => {
-    assert(1 + 1 === 200); // fail
+    assert(1 === 1);
     resolve();
   });
+});
+
+const test3 = test('async fn test', async () => {
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  assert(1 === 1);
 });
 
 run([test1, test2]).catch(() => process.exit(1));
