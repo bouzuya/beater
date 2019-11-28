@@ -1,5 +1,6 @@
 import assert from 'power-assert';
 import { run, test } from '../src';
+import { tests as concurrentTests } from './concurrent';
 import { tests as runTests } from './run';
 import { tests as runWithOptionsTests } from './run-with-options';
 import { tests as testTests } from './test';
@@ -20,6 +21,7 @@ const exampleTests = [test1, test2];
 
 run(
   exampleTests
+    .concat(concurrentTests)
     // .concat(manyTests)
     .concat(runTests)
     .concat(runWithOptionsTests)

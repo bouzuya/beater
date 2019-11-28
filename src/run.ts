@@ -57,7 +57,13 @@ const runWithOptions: RunWithOptions = (options: RunOptions): Run => {
   return async (tests: Test[]): Promise<TestResult[]> => {
     const { reporter } = options;
     reporter.started(tests);
-    const results = await Promise.all(tests.map(runTestWithOptions(options)));
+    const runTest = runTestWithOptions(options);
+    const results: TestResult[] = [];
+    await tests.reduce(async (promise, test) => {
+      await promise;
+      const result = await runTest(test);
+      results.push(result);
+    }, Promise.resolve());
     reporter.finished(results);
     return results.some(({ error }) => typeof error !== 'undefined')
       ? Promise.reject(results)
