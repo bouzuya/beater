@@ -50,24 +50,6 @@ const tests: Test[] = [
       assert(reporter.testStarted.getCall(0).args[0] === test1);
     });
   }),
-  test(category1 + 'no tests', () => {
-    const reporter = reporterStub();
-    return runWithOptions({ reporter })([]).then((results) => {
-      assert(results.length === 0);
-    });
-  }),
-  test(category1 + '1 test', () => {
-    const reporter = reporterStub();
-    const fn1 = sinon.stub();
-    const test1 = test('name1', fn1);
-    return runWithOptions({ reporter })([test1]).then((results) => {
-      assert(results.length === 1);
-      assert(results[0].test === test1); // .test is private
-      assert(typeof results[0].error === 'undefined'); // .error is private
-      assert(fn1.callCount === 1);
-      assert(fn1.getCall(0).args.length === 0);
-    });
-  }),
   test(category1 + '2 tests', () => {
     const reporter = reporterStub();
     const fn1 = sinon.stub();
