@@ -6,7 +6,8 @@ import {
   TestReporter,
   TestResult
 } from 'beater-reporter';
-import { run, runWithOptions } from './run';
+import { run } from './run';
+import { runWithOptions } from './run-with-options';
 import { test } from './test';
 import { Run } from './type/run';
 import { RunOptions } from './type/run-options';
