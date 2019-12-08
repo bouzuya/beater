@@ -24,7 +24,7 @@
     "url": "https://github.com/bouzuya/beater/issues"
   },
   "dependencies": {
-    "beater-tap-reporter": "^2.0.1"
+    "beater-tap-reporter": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.5",
