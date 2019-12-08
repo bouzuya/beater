@@ -63,7 +63,7 @@ const error = (e: any): Error => {
 
 const callTestFn = async (test: Test): Promise<TestResult> => {
   try {
-    await test.fn();
+    await test();
     return ({ test });
   } catch (e) {
     return ({ error: error(e), test });
