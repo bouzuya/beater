@@ -70,14 +70,9 @@ const callTestFn = async (test: Test): Promise<TestResult> => {
   }
 };
 
-const nextTick = (): Promise<void> => {
-  return new Promise((resolve) => process.nextTick(resolve));
-};
-
 const runTestWithOptions = (options: RunOptions): RunTest => {
   return async (test: Test): Promise<TestResult> => {
     const { reporter } = options;
-    await nextTick();
     reporter.testStarted(test);
     const result = await callTestFn(test);
     reporter.testFinished(result);
