@@ -94,6 +94,56 @@ const tests: Test[] = [
       assert(fn1.callCount === 1);
       assert(fn1.getCall(0).args.length === 0);
     });
+  }),
+
+  test(category1 + 'error (number)', () => {
+    const reporter = reporterStub();
+    const fn1 = sinon.stub().throws(123);
+    const test1 = test('name1', fn1);
+    return runWithOptions({ reporter })([test1])
+      .then(() => assert.fail(), (results) => {
+        const { error } = results[0];
+        assert(error.columnNumber === null);
+        assert(error.fileName === null);
+        assert(error.lineNumber === null);
+        assert(error.name === 'Error');
+        assert(error.message === '123');
+        assert(error.stack === ''); // FIXME: 8.x '' -> null
+      });
+  }),
+
+  test(category1 + 'error (object && not Error)', () => {
+    const reporter = reporterStub();
+    const fn1 = sinon.stub().throws({
+      columnNumber: 123, fileName: 'foo.js', lineNumber: 456
+    });
+    const test1 = test('name1', fn1);
+    return runWithOptions({ reporter })([test1])
+      .then(() => assert.fail(), (results) => {
+        const { error } = results[0];
+        assert(error.columnNumber === 123);
+        assert(error.fileName === 'foo.js');
+        assert(error.lineNumber === 456);
+        assert(error.name === 'Error');
+        assert(error.message === '');
+        assert(error.stack === ''); // FIXME: 8.x '' -> null
+      });
+  }),
+
+  test(category1 + 'error (Error)', () => {
+    const reporter = reporterStub();
+    const fn1 = sinon.stub().throws(new Error('message1'));
+    const test1 = test('name1', fn1);
+    return runWithOptions({ reporter })([test1])
+      .then(() => assert.fail(), (results) => {
+        const { error } = results[0];
+        assert(typeof error.columnNumber === 'number');
+        assert(typeof error.fileName === 'string');
+        assert(typeof error.lineNumber === 'number');
+        assert(error.name === 'Error');
+        assert(error.message === 'message1');
+        assert(error.stack.match(/^Error: message1\n    at/) !== null);
+      });
   })
 ];
 

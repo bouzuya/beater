@@ -11,20 +11,53 @@ interface RunTest {
   (test: Test): Promise<TestResult>;
 }
 
+const parseStack = (stack: string | null): {
+  columnNumber: number;
+  fileName: string;
+  lineNumber: number;
+} | null => {
+  if (stack === null) return null;
+  const line = stack.split('\n')[1];
+  if (typeof line === 'undefined') return null;
+  const match = line.match(/^\s+at\s+([^:]+):(\d+):(\d+)$/);
+  if (match === null) return null;
+  const fileName = match[1];
+  const lineNumber = parseInt(match[2], 10);
+  const columnNumber = parseInt(match[3], 10);
+  return { columnNumber, fileName, lineNumber };
+};
+
 const error = (e: any): Error => {
   if (typeof e === 'object') {
-    // ES: name (default: 'Error')
-    const name: string = e.name ?? 'Error';
-    // ES: message (default: '')
-    const message: string = e.message ?? '';
-    // Node.js: stack
-    const stack: string = e.stack ?? '';
-    return { message, name, stack };
+    const name: string = typeof e.name === 'string' ? e.name : 'Error';
+    const message: string = typeof e.message === 'string' ? e.message : '';
+    const stack = typeof e.stack === 'string' ? e.stack : null;
+    const parsedStack = parseStack(stack);
+    return {
+      columnNumber: typeof e.columnNumber === 'number'
+        ? e.columnNumber
+        : parsedStack?.columnNumber ?? null,
+      fileName: typeof e.fileName === 'string'
+        ? e.fileName
+        : parsedStack?.fileName ?? null,
+      lineNumber: typeof e.lineNumber === 'number'
+        ? e.lineNumber
+        : parsedStack?.lineNumber ?? null,
+      message,
+      name,
+      stack
+    };
   } else {
     const name = 'Error';
     const message = String(e);
-    const stack = '';
-    return { message, name, stack };
+    return {
+      columnNumber: null,
+      lineNumber: null,
+      fileName: null,
+      message,
+      name,
+      stack: null
+    };
   }
 };
 
