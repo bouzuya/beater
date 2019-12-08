@@ -7,13 +7,12 @@ beater: **b**ouzuya's **ea**sy **t**est runn**er**. beater is inspired by [eater
 
 ## Features
 
-- Only 3 functions:
-  1. `test()`
-  2. `run()`
-  3. `runWithOptions()`
+- Only 2 functions:
+  - `run()`
+  - `runWithOptions()`
 - You can use your favorite `assert()`.
 - You can use your favorite reporter.
-- You can use TypeScript (2.x `*.d.ts` is included).
+- You can use TypeScript (3.x `*.d.ts` is included).
 
 ## Usage
 
@@ -28,25 +27,25 @@ $ npm install --save-dev beater
 ```js
 // test/index.js
 const assert = require('assert');
-const { run, test } = require('beater');
+const { run } = require('beater');
 
-const test1 = test('simple test', () => {
+const test1 = function simple_test() {
   assert(1 === 1);
-});
+};
 
-const test2 = test('promise test', () => {
+const test2 = function promise_test() {
   return new Promise((resolve) => {
     assert(1 === 1);
     resolve();
   });
-});
+};
 
-const test3 = test('async fn test', async () => {
+const test3 = async function async_fn_test() {
   await new Promise((resolve) => setTimeout(resolve, 0));
   assert(1 === 1);
-});
+};
 
-run([test1, test2]).catch(() => process.exit(1));
+run([test1, test2, test3]).catch(() => process.exit(1));
 ```
 
 ### 3. Run
