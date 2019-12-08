@@ -1,9 +1,10 @@
 import * as beaterTapReporter from 'beater-tap-reporter';
 import assert from 'power-assert';
 import sinon from 'sinon';
-import { Test, TestResult, test } from '../src';
+import { Test, TestResult } from '../src';
 import { run } from '../src/run';
 import * as runWithOptions from '../src/run-with-options';
+import { test } from './helper';
 
 const sandboxFixture = (
   fn: (sandbox: sinon.SinonSandbox) => Promise<void>

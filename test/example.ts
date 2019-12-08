@@ -1,5 +1,5 @@
 import assert from 'power-assert';
-import { test } from '../src';
+import { test } from './helper';
 
 const test1 = test('simple test', () => {
   assert(1 === 1);

@@ -1,6 +1,7 @@
 import assert from 'power-assert';
 import sinon from 'sinon';
-import { Test, test } from '../src';
+import { Test } from '../src';
+import { test } from './helper';
 
 const category = 'test() - ';
 const tests: Test[] = [

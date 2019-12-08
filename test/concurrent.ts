@@ -1,8 +1,9 @@
 import assert from 'power-assert';
 import sinon from 'sinon';
-import { Test, test, runWithOptions, TestResult } from '../src';
+import { Test, runWithOptions, TestResult } from '../src';
 import * as fModule from './concurrent/f';
 import { g } from './concurrent/g';
+import { test } from './helper';
 
 const category = 'concurrent - ';
 const tests: Test[] = [

@@ -1,6 +1,7 @@
 import assert from 'power-assert';
 import sinon from 'sinon';
-import { Test, runWithOptions, test } from '../src';
+import { Test, runWithOptions } from '../src';
+import { test } from './helper';
 
 const reporterStub = () => {
   return {
