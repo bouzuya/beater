@@ -109,7 +109,7 @@ const tests: Test[] = [
         assert(error.lineNumber === null);
         assert(error.name === 'Error');
         assert(error.message === '123');
-        assert(error.stack === ''); // FIXME: 8.x '' -> null
+        assert(error.stack === null);
       });
   }),
 
@@ -127,7 +127,7 @@ const tests: Test[] = [
         assert(error.lineNumber === 456);
         assert(error.name === 'Error');
         assert(error.message === '');
-        assert(error.stack === ''); // FIXME: 8.x '' -> null
+        assert(error.stack === null);
       });
   }),
 
