@@ -19,7 +19,7 @@ const parseStack = (stack: string | null): {
   if (stack === null) return null;
   const line = stack.split('\n')[1];
   if (typeof line === 'undefined') return null;
-  const match = line.match(/^\s+at\s+([^:]+):(\d+):(\d+)$/);
+  const match = line.match(/\(?([^:]+):(\d+):(\d+)\)?$/);
   if (match === null) return null;
   const fileName = match[1];
   const lineNumber = parseInt(match[2], 10);
