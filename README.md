@@ -52,6 +52,11 @@ run([test1, test2, test3]).catch(() => process.exit(1));
 
 ```
 $ node test/index.js
+TAP version 13
+1..3
+ok 1 - simple_test
+ok 2 - promise_test
+ok 3 - async_fn_test
 ```
 
 ## Related Packages
