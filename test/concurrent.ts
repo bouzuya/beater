@@ -1,9 +1,8 @@
 import assert from 'power-assert';
-import sinon from 'sinon';
 import { Test, runWithOptions, TestResult } from '../src';
 import * as fModule from './concurrent/f';
 import { g } from './concurrent/g';
-import { test } from './helper';
+import { sandboxed, test } from './helper';
 
 const category = 'concurrent - ';
 const tests: Test[] = [
@@ -25,22 +24,18 @@ const tests: Test[] = [
           testStarted(_test: Test) { }
         }
       })([
-        test('1', async () => {
-          const sandbox = sinon.createSandbox();
+        test('1', sandboxed(async ({ sandbox }) => {
           const f = sandbox.stub(fModule, 'f');
           await new Promise((resolve) => setTimeout(resolve, 0));
           g();
           assert(f.callCount === 1);
-          sandbox.restore();
-        }),
-        test('2', async () => {
-          const sandbox = sinon.createSandbox();
+        })),
+        test('2', sandboxed(async ({ sandbox }) => {
           const f = sandbox.stub(fModule, 'f');
           await new Promise((resolve) => setTimeout(resolve, 0));
           g();
           assert(f.callCount === 1);
-          sandbox.restore();
-        })
+        }))
       ]);
     });
   })
