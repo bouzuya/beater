@@ -54,7 +54,8 @@
     "bouzuya",
     "eater",
     "runner",
-    "test"
+    "test",
+    "testing"
   ],
   "license": "MIT",
   "main": "lib/index.js",
