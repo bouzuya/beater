@@ -1,8 +1,9 @@
 import { Test } from '../../src';
 
-const slowTestKey: symbol = Symbol();
+const slowTestKey = Symbol();
 
 const slowTest = (test: Test): Test => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Object.defineProperty(test as any, slowTestKey, {
     configurable: false,
     enumerable: false,
@@ -13,6 +14,9 @@ const slowTest = (test: Test): Test => {
 };
 
 const slowTestFilter = (runSlowTests: boolean): ((test: Test) => boolean) =>
-  runSlowTests ? (_) => true : (test) => (test as any)[slowTestKey] !== true;
+  runSlowTests
+    ? (_): boolean => true
+    : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (test): boolean => (test as any)[slowTestKey] !== true;
 
 export { slowTest, slowTestFilter };

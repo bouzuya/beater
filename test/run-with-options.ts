@@ -1,9 +1,14 @@
 import assert from 'power-assert';
 import sinon from 'sinon';
-import { Test, runWithOptions } from '../src';
+import { Test, TestReporter, runWithOptions } from '../src';
 import { test } from './helper';
 
-const reporterStub = () => {
+const reporterStub = (): TestReporter & {
+  finished: sinon.SinonStub;
+  started: sinon.SinonStub;
+  testFinished: sinon.SinonStub;
+  testStarted: sinon.SinonStub;
+} => {
   return {
     finished: sinon.stub(),
     started: sinon.stub(),
@@ -79,9 +84,9 @@ const tests: Test[] = [
         assert(results.length === 1);
         assert(results[0].test === test1); // .test is private
         assert(typeof results[0].error !== 'undefined'); // .error is private
-        assert(results[0].error!.name === 'Error');
-        assert(results[0].error!.message === 'hoge');
-        assert(results[0].error!.stack.length > 0);
+        assert(results[0].error.name === 'Error');
+        assert(results[0].error.message === 'hoge');
+        assert(results[0].error.stack.length > 0);
         assert(fn1.callCount === 1);
         assert(fn1.getCall(0).args.length === 0);
       }
@@ -156,7 +161,7 @@ const tests: Test[] = [
         assert(typeof error.lineNumber === 'number');
         assert(error.name === 'Error');
         assert(error.message === 'message1');
-        assert(error.stack.match(/^Error: message1\n    at/) !== null);
+        assert(error.stack.match(/^Error: message1\n {4}at/) !== null);
       }
     );
   })

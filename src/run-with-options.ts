@@ -25,6 +25,7 @@ const parseStack = (
   return { columnNumber, fileName, lineNumber };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const error = (e: any): Error => {
   if (typeof e === 'object') {
     const name: string = typeof e.name === 'string' ? e.name : 'Error';

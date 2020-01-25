@@ -1,3 +1,3 @@
-const f = (s: string) => console.log(s);
+const f = (s: string): void => console.log(s);
 
 export { f };

@@ -1,5 +1,5 @@
 import { f } from './f';
 
-const g = () => f('hello');
+const g = (): void => f('hello');
 
 export { g };

@@ -4,7 +4,7 @@ import { Test } from '../../src';
 const sandboxedTest = (
   test: (context: { sandbox: sinon.SinonSandbox }) => void
 ): Test => {
-  return async () => {
+  return async (): Promise<void> => {
     const sandbox = sinon.createSandbox();
     try {
       return await test({ sandbox });

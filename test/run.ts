@@ -8,7 +8,7 @@ import { test } from './helper';
 
 const sandboxFixture = (
   fn: (sandbox: sinon.SinonSandbox) => Promise<void>
-) => async () => {
+) => async (): Promise<void> => {
   const sandbox = sinon.createSandbox();
   try {
     await fn(sandbox);
@@ -24,10 +24,18 @@ const tests: Test[] = [
     sandboxFixture(async (sandbox) => {
       const results: TestResult[] = [];
       const reporter = {
-        finished() {},
-        started() {},
-        testFinished() {},
-        testStarted() {}
+        finished(): void {
+          // do nothing
+        },
+        started(): void {
+          // do nothing
+        },
+        testFinished(): void {
+          // do nothing
+        },
+        testStarted(): void {
+          // do nothing
+        }
       };
       const reporterStub = sandbox
         .stub(beaterTapReporter, 'reporter')

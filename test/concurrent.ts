@@ -10,7 +10,7 @@ const tests: Test[] = [
     return new Promise((resolve, reject) => {
       runWithOptions({
         reporter: {
-          finished(results: TestResult[]) {
+          finished(results: TestResult[]): void {
             const errorResult = results.find(
               ({ error }) => typeof error !== 'undefined'
             );
@@ -20,9 +20,15 @@ const tests: Test[] = [
               reject(errorResult.error);
             }
           },
-          started(_tests: Test[]) {},
-          testFinished(_result: TestResult) {},
-          testStarted(_test: Test) {}
+          started(_tests: Test[]): void {
+            // do nothing
+          },
+          testFinished(_result: TestResult): void {
+            // do nothing
+          },
+          testStarted(_test: Test): void {
+            // do nothing
+          }
         }
       })([
         test(
