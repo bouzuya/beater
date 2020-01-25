@@ -1,8 +1,4 @@
-import {
-  Error,
-  Test,
-  TestResult
-} from 'beater-reporter';
+import { Error, Test, TestResult } from 'beater-reporter';
 import { Run } from './type/run';
 import { RunOptions } from './type/run-options';
 import { RunWithOptions } from './type/run-with-options';
@@ -11,7 +7,9 @@ interface RunTest {
   (test: Test): Promise<TestResult>;
 }
 
-const parseStack = (stack: string | null): {
+const parseStack = (
+  stack: string | null
+): {
   columnNumber: number;
   fileName: string;
   lineNumber: number;
@@ -34,15 +32,18 @@ const error = (e: any): Error => {
     const stack = typeof e.stack === 'string' ? e.stack : null;
     const parsedStack = parseStack(stack);
     return {
-      columnNumber: typeof e.columnNumber === 'number'
-        ? e.columnNumber
-        : parsedStack?.columnNumber ?? null,
-      fileName: typeof e.fileName === 'string'
-        ? e.fileName
-        : parsedStack?.fileName ?? null,
-      lineNumber: typeof e.lineNumber === 'number'
-        ? e.lineNumber
-        : parsedStack?.lineNumber ?? null,
+      columnNumber:
+        typeof e.columnNumber === 'number'
+          ? e.columnNumber
+          : parsedStack?.columnNumber ?? null,
+      fileName:
+        typeof e.fileName === 'string'
+          ? e.fileName
+          : parsedStack?.fileName ?? null,
+      lineNumber:
+        typeof e.lineNumber === 'number'
+          ? e.lineNumber
+          : parsedStack?.lineNumber ?? null,
       message,
       name,
       stack
@@ -64,9 +65,9 @@ const error = (e: any): Error => {
 const callTestFn = async (test: Test): Promise<TestResult> => {
   try {
     await test();
-    return ({ test });
+    return { test };
   } catch (e) {
-    return ({ error: error(e), test });
+    return { error: error(e), test };
   }
 };
 

@@ -14,7 +14,6 @@ const tests: Test[] = [
   ...runTests,
   ...runWithOptionsTests,
   ...testTests
-]
-  .filter(slowTestFilter(typeof process.env.RUN_SLOW_TEST !== 'undefined'));
+].filter(slowTestFilter(typeof process.env.RUN_SLOW_TEST !== 'undefined'));
 
 run(tests).catch((_) => process.exit(1));

@@ -13,8 +13,6 @@ const slowTest = (test: Test): Test => {
 };
 
 const slowTestFilter = (runSlowTests: boolean): ((test: Test) => boolean) =>
-  runSlowTests
-    ? (_) => true
-    : (test) => (test as any)[slowTestKey] !== true;
+  runSlowTests ? (_) => true : (test) => (test as any)[slowTestKey] !== true;
 
 export { slowTest, slowTestFilter };

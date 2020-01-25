@@ -1,9 +1,4 @@
-import {
-  Error,
-  Test,
-  TestReporter,
-  TestResult
-} from 'beater-reporter';
+import { Error, Test, TestReporter, TestResult } from 'beater-reporter';
 import { run } from './run';
 import { runWithOptions } from './run-with-options';
 import { Run } from './type/run';
