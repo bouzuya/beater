@@ -34,7 +34,7 @@
     "@types/node": "^10.17.14",
     "@types/power-assert": "^1.5.1",
     "@types/proxyquire": "^1.3.28",
-    "@types/sinon": "^7.5.0",
+    "@types/sinon": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "babel-preset-power-assert": "^3.0.0",
