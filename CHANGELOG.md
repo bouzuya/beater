@@ -1,3 +1,10 @@
+## [9.0.1](https://github.com/bouzuya/beater/compare/v9.0.0...v9.0.1) (2020-04-11)
+
+* build(deps): update dependencies
+* build(deps-dev): update devDependencies
+
+
+
 # [9.0.0](https://github.com/bouzuya/beater/compare/v8.0.2...v9.0.0) (2020-02-01)
 
 * Bump eslint-config-prettier from 6.9.0 to 6.10.0 ([7ee3e2d](https://github.com/bouzuya/beater/commit/7ee3e2d))
