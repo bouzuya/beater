@@ -75,7 +75,7 @@
     "build:format": "prettier --check '{src,test}/**/*.ts'",
     "build:lib": "babel --copy-files --no-comments --out-dir lib/ .tmp/es2015/src/",
     "build:lint": "eslint '{src,test}/**/*.ts'",
-    "clean": "rimraf \".tmp\" \"lib\"",
+    "clean": "rimraf .nyc_output .tmp coverage lib",
     "format": "prettier --write '{src,test}/**/*.ts'",
     "prepare": "npm-run-all -s \"clean\" \"build\"",
     "test": "nyc --exclude .tmp/es5/test --source-map false node .tmp/es5/test/index.js",
