@@ -1,6 +1,6 @@
-import { sandboxedTest } from './sandboxed-test';
-import { slowTest, slowTestFilter } from './slow-test';
-import { namedTest } from './named-test';
+import { sandboxedTest } from "./sandboxed-test";
+import { slowTest, slowTestFilter } from "./slow-test";
+import { namedTest } from "./named-test";
 
 const test = namedTest;
 

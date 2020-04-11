@@ -1,6 +1,6 @@
-import assert from 'power-assert';
-import { Test } from '../src';
-import { named, slow } from './helper';
+import assert from "power-assert";
+import { Test } from "../src";
+import { named, slow } from "./helper";
 
 const tests: Test[] = []; // mutable
 for (let i = 0; i < 100000; i++) {

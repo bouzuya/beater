@@ -1,4 +1,4 @@
-import { Test } from '../../src';
+import { Test } from "../../src";
 
 const slowTestKey = Symbol();
 

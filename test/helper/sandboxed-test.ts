@@ -1,5 +1,5 @@
-import sinon from 'sinon';
-import { Test } from '../../src';
+import sinon from "sinon";
+import { Test } from "../../src";
 
 const sandboxedTest = (
   test: (context: { sandbox: sinon.SinonSandbox }) => void

@@ -1,7 +1,7 @@
-import { Error, Test, TestResult } from 'beater-reporter';
-import { Run } from './type/run';
-import { RunOptions } from './type/run-options';
-import { RunWithOptions } from './type/run-with-options';
+import { Error, Test, TestResult } from "beater-reporter";
+import { Run } from "./type/run";
+import { RunOptions } from "./type/run-options";
+import { RunWithOptions } from "./type/run-with-options";
 
 interface RunTest {
   (test: Test): Promise<TestResult>;
@@ -15,8 +15,8 @@ const parseStack = (
   lineNumber: number;
 } | null => {
   if (stack === null) return null;
-  const line = stack.split('\n')[1];
-  if (typeof line === 'undefined') return null;
+  const line = stack.split("\n")[1];
+  if (typeof line === "undefined") return null;
   const match = line.match(/\(?([^:]+):(\d+):(\d+)\)?$/);
   if (match === null) return null;
   const fileName = match[1];
@@ -27,22 +27,22 @@ const parseStack = (
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const error = (e: any): Error => {
-  if (typeof e === 'object') {
-    const name: string = typeof e.name === 'string' ? e.name : 'Error';
-    const message: string = typeof e.message === 'string' ? e.message : '';
-    const stack = typeof e.stack === 'string' ? e.stack : null;
+  if (typeof e === "object") {
+    const name: string = typeof e.name === "string" ? e.name : "Error";
+    const message: string = typeof e.message === "string" ? e.message : "";
+    const stack = typeof e.stack === "string" ? e.stack : null;
     const parsedStack = parseStack(stack);
     return {
       columnNumber:
-        typeof e.columnNumber === 'number'
+        typeof e.columnNumber === "number"
           ? e.columnNumber
           : parsedStack?.columnNumber ?? null,
       fileName:
-        typeof e.fileName === 'string'
+        typeof e.fileName === "string"
           ? e.fileName
           : parsedStack?.fileName ?? null,
       lineNumber:
-        typeof e.lineNumber === 'number'
+        typeof e.lineNumber === "number"
           ? e.lineNumber
           : parsedStack?.lineNumber ?? null,
       message,
@@ -50,7 +50,7 @@ const error = (e: any): Error => {
       stack
     };
   } else {
-    const name = 'Error';
+    const name = "Error";
     const message = String(e);
     return {
       columnNumber: null,
@@ -94,7 +94,7 @@ const runWithOptions: RunWithOptions = (options: RunOptions): Run => {
       results.push(result);
     }, Promise.resolve());
     reporter.finished(results);
-    return results.some(({ error }) => typeof error !== 'undefined')
+    return results.some(({ error }) => typeof error !== "undefined")
       ? Promise.reject(results)
       : Promise.resolve(results);
   };

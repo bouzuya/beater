@@ -1,10 +1,10 @@
-import * as beaterTapReporter from 'beater-tap-reporter';
-import assert from 'power-assert';
-import sinon from 'sinon';
-import { Test, TestResult } from '../src';
-import { run } from '../src/run';
-import * as runWithOptions from '../src/run-with-options';
-import { test } from './helper';
+import * as beaterTapReporter from "beater-tap-reporter";
+import assert from "power-assert";
+import sinon from "sinon";
+import { Test, TestResult } from "../src";
+import { run } from "../src/run";
+import * as runWithOptions from "../src/run-with-options";
+import { test } from "./helper";
 
 const sandboxFixture = (
   fn: (sandbox: sinon.SinonSandbox) => Promise<void>
@@ -17,11 +17,11 @@ const sandboxFixture = (
   }
 };
 
-const category = 'run() - ';
+const category = "run() - ";
 const tests: Test[] = [
   test(
-    category + 'call runWithOptions',
-    sandboxFixture(async (sandbox) => {
+    category + "call runWithOptions",
+    sandboxFixture(async sandbox => {
       const results: TestResult[] = [];
       const reporter = {
         finished(): void {
@@ -38,10 +38,10 @@ const tests: Test[] = [
         }
       };
       const reporterStub = sandbox
-        .stub(beaterTapReporter, 'reporter')
+        .stub(beaterTapReporter, "reporter")
         .returns(reporter);
       const runWithOptionsStub = sandbox
-        .stub(runWithOptions, 'runWithOptions')
+        .stub(runWithOptions, "runWithOptions")
         .returns(() => Promise.resolve(results));
 
       assert.deepStrictEqual(await run([]), results);
