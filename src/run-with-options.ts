@@ -47,7 +47,7 @@ const error = (e: any): Error => {
           : parsedStack?.lineNumber ?? null,
       message,
       name,
-      stack
+      stack,
     };
   } else {
     const name = "Error";
@@ -58,7 +58,7 @@ const error = (e: any): Error => {
       fileName: null,
       message,
       name,
-      stack: null
+      stack: null,
     };
   }
 };

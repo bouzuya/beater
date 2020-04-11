@@ -18,7 +18,7 @@ const tests: Test[] = [
       .then(() => o())
       .then(
         () => assert.fail(),
-        e => assert(e === error)
+        (e) => assert(e === error)
       );
   }),
   test(category + "fn failure (not Error)", () => {
@@ -29,7 +29,7 @@ const tests: Test[] = [
       .then(() => o())
       .then(
         () => assert.fail(),
-        e => assert(e === 123)
+        (e) => assert(e === 123)
       );
   }),
   test(category + "fn success", () => {
@@ -50,7 +50,7 @@ const tests: Test[] = [
       .then(() => o())
       .then(
         () => assert.fail(),
-        e => assert(e === error)
+        (e) => assert(e === error)
       );
   }),
   test(category + "fn promise success", () => {
@@ -62,7 +62,7 @@ const tests: Test[] = [
         assert(fn.callCount === 1);
         assert(fn.getCall(0).args.length === 0);
       });
-  })
+  }),
 ];
 
 export { tests };

@@ -8,7 +8,7 @@ const slowTest = (test: Test): Test => {
     configurable: false,
     enumerable: false,
     value: true,
-    writable: false
+    writable: false,
   });
   return test;
 };

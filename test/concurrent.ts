@@ -28,14 +28,14 @@ const tests: Test[] = [
           },
           testStarted(_test: Test): void {
             // do nothing
-          }
-        }
+          },
+        },
       })([
         test(
           "1",
           sandboxed(async ({ sandbox }) => {
             const f = sandbox.stub(fModule, "f");
-            await new Promise(resolve => setTimeout(resolve, 0));
+            await new Promise((resolve) => setTimeout(resolve, 0));
             g();
             assert(f.callCount === 1);
           })
@@ -44,14 +44,14 @@ const tests: Test[] = [
           "2",
           sandboxed(async ({ sandbox }) => {
             const f = sandbox.stub(fModule, "f");
-            await new Promise(resolve => setTimeout(resolve, 0));
+            await new Promise((resolve) => setTimeout(resolve, 0));
             g();
             assert(f.callCount === 1);
           })
-        )
+        ),
       ]);
     });
-  })
+  }),
 ];
 
 export { tests };

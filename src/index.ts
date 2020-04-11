@@ -14,5 +14,5 @@ export {
   TestReporter,
   TestResult,
   run,
-  runWithOptions
+  runWithOptions,
 };

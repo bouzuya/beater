@@ -5,7 +5,7 @@ const namedTest = (name: string, fn: Test): Test => {
     configurable: false,
     enumerable: true,
     value: name,
-    writable: false
+    writable: false,
   });
   return fn;
 };

@@ -9,5 +9,5 @@ export {
   sandboxedTest as sandboxed,
   slowTest as slow,
   slowTestFilter,
-  test
+  test,
 };

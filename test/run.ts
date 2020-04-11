@@ -21,7 +21,7 @@ const category = "run() - ";
 const tests: Test[] = [
   test(
     category + "call runWithOptions",
-    sandboxFixture(async sandbox => {
+    sandboxFixture(async (sandbox) => {
       const results: TestResult[] = [];
       const reporter = {
         finished(): void {
@@ -35,7 +35,7 @@ const tests: Test[] = [
         },
         testStarted(): void {
           // do nothing
-        }
+        },
       };
       const reporterStub = sandbox
         .stub(beaterTapReporter, "reporter")
@@ -48,11 +48,11 @@ const tests: Test[] = [
 
       assert(runWithOptionsStub.callCount === 1);
       assert.deepStrictEqual(runWithOptionsStub.getCall(0).args, [
-        { reporter }
+        { reporter },
       ]);
       assert(reporterStub.callCount === 1);
     })
-  )
+  ),
 ];
 
 export { tests };

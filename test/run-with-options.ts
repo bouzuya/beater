@@ -13,7 +13,7 @@ const reporterStub = (): TestReporter & {
     finished: sinon.stub(),
     started: sinon.stub(),
     testFinished: sinon.stub(),
-    testStarted: sinon.stub()
+    testStarted: sinon.stub(),
   };
 };
 
@@ -21,7 +21,7 @@ const category1 = "runWithOptions() - ";
 const tests: Test[] = [
   test(category1 + "no tests", () => {
     const reporter = reporterStub();
-    return runWithOptions({ reporter })([]).then(results => {
+    return runWithOptions({ reporter })([]).then((results) => {
       assert(results.length === 0);
       assert(reporter.finished.callCount === 1);
       assert(reporter.finished.getCall(0).args.length === 1);
@@ -36,7 +36,7 @@ const tests: Test[] = [
   test(category1 + "1 test", () => {
     const reporter = reporterStub();
     const test1 = test("name1", () => void 0);
-    return runWithOptions({ reporter })([test1]).then(results => {
+    return runWithOptions({ reporter })([test1]).then((results) => {
       assert(results.length === 1);
       assert(reporter.finished.callCount === 1);
       assert(reporter.finished.getCall(0).args.length === 1);
@@ -62,7 +62,7 @@ const tests: Test[] = [
     const fn2 = sinon.stub();
     const test1 = test("name1", fn1);
     const test2 = test("name2", fn2);
-    return runWithOptions({ reporter })([test1, test2]).then(results => {
+    return runWithOptions({ reporter })([test1, test2]).then((results) => {
       assert(results.length === 2);
       assert(results[0].test === test1); // .test is private
       assert(results[1].test === test2); // .test is private
@@ -80,7 +80,7 @@ const tests: Test[] = [
     const test1 = test("name1", fn1);
     return runWithOptions({ reporter })([test1]).then(
       () => assert.fail(),
-      results => {
+      (results) => {
         assert(results.length === 1);
         assert(results[0].test === test1); // .test is private
         assert(typeof results[0].error !== "undefined"); // .error is private
@@ -98,7 +98,7 @@ const tests: Test[] = [
     const test1 = test("name1", fn1);
     return runWithOptions({ reporter })([test1]).then(
       () => assert.fail(),
-      results => {
+      (results) => {
         assert(results.length === 1);
         assert(results[0].test === test1); // .test is private
         assert(typeof results[0].error !== "undefined"); // .error is private
@@ -114,7 +114,7 @@ const tests: Test[] = [
     const test1 = test("name1", fn1);
     return runWithOptions({ reporter })([test1]).then(
       () => assert.fail(),
-      results => {
+      (results) => {
         const { error } = results[0];
         assert(error.columnNumber === null);
         assert(error.fileName === null);
@@ -131,12 +131,12 @@ const tests: Test[] = [
     const fn1 = sinon.stub().throws({
       columnNumber: 123,
       fileName: "foo.js",
-      lineNumber: 456
+      lineNumber: 456,
     });
     const test1 = test("name1", fn1);
     return runWithOptions({ reporter })([test1]).then(
       () => assert.fail(),
-      results => {
+      (results) => {
         const { error } = results[0];
         assert(error.columnNumber === 123);
         assert(error.fileName === "foo.js");
@@ -154,7 +154,7 @@ const tests: Test[] = [
     const test1 = test("name1", fn1);
     return runWithOptions({ reporter })([test1]).then(
       () => assert.fail(),
-      results => {
+      (results) => {
         const { error } = results[0];
         assert(typeof error.columnNumber === "number");
         assert(typeof error.fileName === "string");
@@ -164,7 +164,7 @@ const tests: Test[] = [
         assert(error.stack.match(/^Error: message1\n {4}at/) !== null);
       }
     );
-  })
+  }),
 ];
 
 export { tests };
